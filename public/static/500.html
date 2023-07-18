@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://localhost:3000/tickets/daddy -->
+<html lang="en-US" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title> 500 Server Error | Stub Boxoffice </title>
+		
+        <link href="http://localhost:3000/public/src/img/favicon.ico" rel="shortcut icon" type="/images/favicon.ico">
+        <link href="http://localhost:3000/public/src/img/favicon.ico" rel="apple-touch-icon-precomposed" type="/images/favicon.ico">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+
+		<meta property="og:locale" content="en_US">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Stub Boxoffice">
+		<meta property="og:url" content="">
+		<meta property="og:site_name" content="Stub Boxoffice">
+
+		<!-- base css files -->
+		<link href="./500_files/css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./500_files/font-awesome.css">
+		<!-- <link rel="stylesheet" type="text/css" href="http://localhost:3000/public/dist/css/main.css"> -->
+		
+		<!-- Begin loop through all the css files -->
+		
+		<link rel="stylesheet" type="text/css" href="./500_files/main.css">
+		
+		<link rel="stylesheet" type="text/css" href="./500_files/error.css">
+		
+		<!-- End loop through all the css files -->
+
+	</head>
+
+
+	<body>
+		
+<nav role="navigation">
+	<div id="pre-nav" class="section">
+		<div class="inner">
+			<p class="notice"> Stub Boxoffice is a resale marketplace, not a venue. Ticket prices may be above face value. </p>
+		</div>
+	</div>
+
+	<div id="main-nav" class="section">
+		<div class="inner">
+			<div class="content">
+				<div class="left">
+					<a href="http://localhost:3000/" class="logo-container">
+						<img src="./500_files/logo.jpg">
+					</a>
+
+					<div id="nav-links" class="mobile-js-hidden">
+						<a href="http://localhost:3000/sports/"> Sports </a>
+						<a href="http://localhost:3000/concerts/"> Concerts </a>
+						<a href="http://localhost:3000/theatre/"> Theatre </a>
+						<a href="http://localhost:3000/other/"> Other </a>
+					</div>
+
+					<div class="mobile-btns">
+						<div class="m-btn" id="m-search-btn">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</div>
+						<div class="m-btn" id="m-nav-btn">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+							<i class="fa fa-times mobile-js-hidden" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+
+				<div id="nav-search" class="search mobile-js-hidden">
+					<form onsubmit="return cancelFormSubmit()" _lpchecked="1"> <!-- cancels the default form submission behavior --> <!-- action="/search" method="get" -->
+						<input type="text" name="val" autofocus="autofocus" autocomplete="off" value="" maxlength="100" id="ajax-search" placeholder="Search Performers, Events, &amp; Venues" onkeyup="ajaxSearch(this.value)">
+						<i class="fa fa-search"></i>
+					</form>
+
+					<div id="ajax-search-results" style="display: none !important;"></div> <!-- style="display: none;" -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</nav>
+
+
+
+<main>
+	<div class="header" style="background-image: url(http://localhost:3000/public/src/img/header/header-img-other.jpg); width: 100%; height: 250px; background-size: cover;"></div>
+
+	<div id="500-content" class="section error-page">
+		<div class="inner">
+				
+			<div id="server-message">
+				<img src="./500_files/500.svg">
+				
+				<p> I'm afraid something went wrong. </p>
+				
+				<div class="btn-group">
+					<a class="btn" href="http://localhost:3000/"> Go Home </a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</main>
+
+
+
+		<footer>
+			<div id="top-foot" class="section">
+				<div class="inner">
+					<div id="link-line">
+						<a href="http://localhost:3000/legal/privacy"> Privacy Policy </a>
+						<a href="http://localhost:3000/contact"> Contact Us </a>
+					</div>
+
+					<p class="disclaimer"> Stub Boxoffice is a resale marketplace, not a venue. Ticket prices may be above face value. </p>
+
+					<div id="payment-logos">
+						<a target="blank"> <img src="./500_files/paypal.png" alt="Stubbox Office - Paypal - Available Payment Methods"> </a>
+						<a target="blank"> <img src="./500_files/mastercard.png" alt="Stubbox Office - Mastercard - Available Payment Methods"> </a>
+						<a target="blank"> <img src="./500_files/visa.png" alt="Stubbox Office - Visa - Available Payment Methods"> </a>
+						<a target="blank"> <img src="./500_files/amex.png" alt="Stubbox Office - American Express - Available Payment Methods"> </a>
+						<a target="blank"> <img src="./500_files/discover.png" alt="Stubbox Office - Discover - Available Payment Methods"> </a>
+					</div>
+				</div>
+			</div>
+
+			<div id="bot-foot" class="section">
+				<div class="inner">
+					<p class="copyright"> © Copyright 2019 Stub Boxoffice. All Rights Reserved. </p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- mandatory js scripts -->
+		<script type="text/javascript" src="./500_files/main.js"></script>
+
+		<!-- for live ajax search -->
+		<script type="text/javascript">
+			function ajaxSearch(str) {
+				if (str.length == 0) { 
+					document.querySelector("#ajax-search-results").style = "display: none !important;";
+					return;
+				}
+
+				// IE7+, Firefox, Chrome, Opera, Safari
+				var ajax = new XMLHttpRequest();
+
+				ajax.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var res = JSON.parse(this.responseText);
+						var search_results_container = document.querySelector("#ajax-search-results");
+
+						search_results_container.innerHTML = " ";
+
+						if (res['performers'].length == 0 && res['venues'].length == 0) {
+							search_results_container.style = "display: none !important;";
+						}
+
+						if (res['performers'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Performers</p>";
+
+							res['performers'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						if (res['venues'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Venues</p>";
+
+							res['venues'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						// if (document.querySelector("#ajax-search-results") != null) {
+						// 	// results navigation functions
+						// 	document.querySelector('#ajax-search-results a:first-of-type').className = "active";
+						// }
+
+					}
+				}
+
+				ajax.open("POST", "/ajax-search", true);
+				ajax.setRequestHeader('Content-Type', 'application/json');
+				ajax.send(JSON.stringify({ searchVal: str }));
+			}
+
+			// stop form in navigation from submitting and resetting the page
+			function cancelFormSubmit() { return false; }
+		</script>
+
+
+		<script type="text/javascript">
+			// script for controlling search input && navigation w/ associated icons
+			document.getElementById("m-search-btn").addEventListener('click', mobileSearchBtnClick);
+			document.getElementById("m-nav-btn").addEventListener('click', mobileNavBtnClick);
+			
+			function mobileSearchBtnClick(e) {
+				var search = document.getElementById("nav-search");
+				var nav = document.getElementById("nav-links");
+				var navIconOpen = document.querySelector("#m-nav-btn i.fa-bars");
+				var navIconClose = document.querySelector("#m-nav-btn i.fa-times");
+
+				if (search.classList.contains('mobile-js-hidden')) {
+					search.classList.remove("mobile-js-hidden");
+
+					if (!nav.classList.contains('mobile-js-hidden')) {
+						nav.classList.add("mobile-js-hidden");
+
+						navIconOpen.classList.remove("mobile-js-hidden");
+						navIconClose.classList.add("mobile-js-hidden");
+					}
+				} else {
+					search.classList.add("mobile-js-hidden");
+				}
+			}
+
+			function mobileNavBtnClick(e) {
+				var search = document.getElementById("nav-search");
+				var nav = document.getElementById("nav-links");
+				var navIconOpen = document.querySelector("#m-nav-btn i.fa-bars");
+				var navIconClose = document.querySelector("#m-nav-btn i.fa-times");
+
+				if (nav.classList.contains('mobile-js-hidden')) {
+					nav.classList.remove("mobile-js-hidden");
+
+					navIconOpen.classList.add("mobile-js-hidden");
+					navIconClose.classList.remove("mobile-js-hidden");
+
+					if (!search.classList.contains('mobile-js-hidden')) {
+						search.classList.add("mobile-js-hidden");
+					}
+				} else {
+					nav.classList.add("mobile-js-hidden");
+
+					navIconOpen.classList.remove("mobile-js-hidden");
+					navIconClose.classList.add("mobile-js-hidden");
+				}
+			}
+		</script>
+		<!-- Begin loop through all the js files -->
+		
+		<!-- End loop through all the js files -->
+	
+</body></html>
