@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "legal.css",
+	"sources": [
+		"../scss/legal.scss"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,MAAM,CAAC;EACN,OAAO,EAAE,WAAW,GAapB;EAdD,AAIE,MAJI,CAGL,MAAM,CACL,EAAE,AAAA,MAAM,CAAC;IACR,WAAW,EAAE,GAAG;IAChB,cAAc,EAAE,SAAS;IACzB,MAAM,EAAE,UAAU,GAClB;EARH,AAUE,MAVI,CAGL,MAAM,CAOL,QAAQ,CAAC;IACR,MAAM,EAAE,OAAO,GACf"
+}

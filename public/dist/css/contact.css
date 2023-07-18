@@ -1,0 +1,92 @@
+main #title {
+  margin: 35px 0 25px 0; }
+  main #title .inner h1.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 10px 0 5px; }
+
+main #contact {
+  padding: 0 0 50px 0; }
+  main #contact .inner {
+    display: flex;
+    flex-flow: row nowrap; }
+    main #contact .inner #form {
+      width: 50%;
+      max-width: 500px; }
+      main #contact .inner #form form .input-wrapper {
+        margin: 0 0 15px 0; }
+        main #contact .inner #form form .input-wrapper label {
+          margin: 0 0 5px 0;
+          line-height: 12px; }
+      main #contact .inner #form form input[type='submit']:hover {
+        background-color: #dc4041 !important; }
+      main #contact .inner #form form input[type='submit']:disabled {
+        color: #333;
+        background-color: #c0c0c0; }
+      main #contact .inner #form #formResponse {
+        margin: 5px 0 0 0;
+        padding: 10px 20px;
+        height: 0;
+        display: none;
+        overflow: hidden; }
+        main #contact .inner #form #formResponse * {
+          color: #fff; }
+        main #contact .inner #form #formResponse.show {
+          display: inherit;
+          height: auto; }
+        main #contact .inner #form #formResponse.success {
+          background-color: #36dc00; }
+        main #contact .inner #form #formResponse.failure {
+          background-color: #d82323; }
+        main #contact .inner #form #formResponse p {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0;
+          padding: 0; }
+          main #contact .inner #form #formResponse p span {
+            font-weight: 600; }
+          main #contact .inner #form #formResponse p i {
+            font-size: 12px; }
+    main #contact .inner #mailto {
+      width: calc(100% - 475px);
+      min-width: 50%;
+      margin: 0 0 0 25px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: flex-start; }
+      main #contact .inner #mailto ul {
+        margin: 0;
+        padding: 25px 30px;
+        list-style: none;
+        background-color: #dc4041; }
+        main #contact .inner #mailto ul li {
+          display: flex;
+          flex-flow: column;
+          align-items: center; }
+          main #contact .inner #mailto ul li * {
+            color: #fff;
+            text-align: center; }
+          main #contact .inner #mailto ul li:first-of-type {
+            margin: 0 0 25px 0; }
+          main #contact .inner #mailto ul li:last-of-type {
+            margin: 25px 0 0 0; }
+          main #contact .inner #mailto ul li h3 {
+            margin: 0 0 5px 0;
+            font-weight: 500; }
+          main #contact .inner #mailto ul li a {
+            display: inline-block;
+            margin: 0 auto;
+            border-bottom: 1px dashed #fff; }
+    @media (max-width: 600px) {
+      main #contact .inner {
+        flex-flow: column; }
+        main #contact .inner #form, main #contact .inner #mailto {
+          width: 100%; }
+        main #contact .inner #form {
+          max-width: none; }
+        main #contact .inner #mailto {
+          margin: 35px 0 0 0; } }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9zY3NzL2NvbnRhY3Quc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQTtFQUVFLHFCQUFxQixFQUFBO0VBRnZCO0lBTUksZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixvQkFBb0IsRUFBQTs7QUFSeEI7RUFjRSxtQkFBbUIsRUFBQTtFQWRyQjtJQWlCRyxhQUFhO0lBQ2IscUJBQXFCLEVBQUE7SUFsQnhCO01BcUJJLFVBQVU7TUFDVixnQkFBZ0IsRUFBQTtNQXRCcEI7UUEwQk0sa0JBQWtCLEVBQUE7UUExQnhCO1VBNkJPLGlCQUFpQjtVQUNqQixpQkFBaUIsRUFBQTtNQTlCeEI7UUFvQ08sb0NBQXlDLEVBQUE7TUFwQ2hEO1FBd0NPLFdBQVc7UUFDWCx5QkFBeUIsRUFBQTtNQXpDaEM7UUErQ0ssaUJBQWlCO1FBQ2pCLGtCQUFrQjtRQUVsQixTQUFTO1FBQ1QsYUFBYTtRQUNiLGdCQUFnQixFQUFBO1FBcERyQjtVQXVETSxXQUFXLEVBQUE7UUF2RGpCO1VBMkRNLGdCQUFnQjtVQUNoQixZQUFZLEVBQUE7UUE1RGxCO1VBZ0VNLHlCQWxFVyxFQUFBO1FBRWpCO1VBb0VNLHlCQXZFbUIsRUFBQTtRQUd6QjtVQXdFTSxhQUFhO1VBQ2IscUJBQXFCO1VBQ3JCLDhCQUE4QjtVQUM5QixtQkFBbUI7VUFFbkIsU0FBUztVQUNULFVBQVUsRUFBQTtVQTlFaEI7WUFpRk8sZ0JBQWdCLEVBQUE7VUFqRnZCO1lBcUZPLGVBQWUsRUFBQTtJQXJGdEI7TUE2RkkseUJBQXlCO01BQ3pCLGNBQWM7TUFDZCxrQkFBa0I7TUFFbEIsYUFBYTtNQUNiLHFCQUFxQjtNQUNyQix1QkFBdUI7TUFDdkIsdUJBQXVCLEVBQUE7TUFwRzNCO1FBdUdLLFNBQVM7UUFDVCxrQkFBa0I7UUFDbEIsZ0JBQWdCO1FBRWhCLHlCQWhIZ0IsRUFBQTtRQUtyQjtVQStHTSxhQUFhO1VBQ2IsaUJBQWlCO1VBQ2pCLG1CQUFtQixFQUFBO1VBakh6QjtZQW9ITyxXQUFXO1lBQ1gsa0JBQWtCLEVBQUE7VUFySHpCO1lBeUhPLGtCQUFrQixFQUFBO1VBekh6QjtZQTZITyxrQkFBa0IsRUFBQTtVQTdIekI7WUFpSU8saUJBQWlCO1lBQ2pCLGdCQUFnQixFQUFBO1VBbEl2QjtZQXdJTyxxQkFBcUI7WUFDckIsY0FBYztZQUNkLDhCQUE4QixFQUFBO0lBTWxDO01BaEpIO1FBaUpJLGlCQUFpQixFQUFBO1FBakpyQjtVQW9KSyxXQUFXLEVBQUE7UUFwSmhCO1VBd0pLLGVBQWUsRUFBQTtRQXhKcEI7VUE0Skssa0JBQWtCLEVBQUEsRUFDbEIiLCJmaWxlIjoiY29udGFjdC5jc3MifQ== */

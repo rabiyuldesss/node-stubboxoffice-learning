@@ -1,0 +1,15 @@
+@media (max-width: 991px) {
+  html > body > nav,
+  html > body > .event-header,
+  html > body > footer {
+    display: none !important; } }
+
+#tickets {
+  padding: 0; }
+  #tickets .ticket-container .event-info-name {
+    padding: 0; }
+  #tickets .ticket-container .event-info-guarantee-show {
+    color: #dc4041;
+    padding: 0;
+    margin: 0 0 5px 0; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9zY3NzL2V2ZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUE7RUFDQzs7O0lBR0Msd0JBQXdCLEVBQUEsRUFDeEI7O0FBR0Y7RUFDQyxVQUFVLEVBQUE7RUFEWDtJQUtHLFVBQVUsRUFBQTtFQUxiO0lBU0csY0FwQmtCO0lBcUJsQixVQUFVO0lBQ1YsaUJBQWlCLEVBQUEiLCJmaWxlIjoiZXZlbnQuY3NzIn0= */
