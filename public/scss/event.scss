@@ -1,0 +1,27 @@
+
+$default_red: #dc4041;
+$secondary_color: #d82323;
+
+@media (max-width: 991px) {
+	html > body > nav,
+	html > body > .event-header,
+	html > body > footer  {
+		display: none !important;
+	}
+}
+
+#tickets {
+	padding: 0;
+
+	.ticket-container {
+		.event-info-name {
+			padding: 0;
+		}
+
+		.event-info-guarantee-show {
+			color: $default_red;
+			padding: 0;
+			margin: 0 0 5px 0;
+		}
+	}
+}
