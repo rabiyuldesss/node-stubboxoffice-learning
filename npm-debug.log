@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'uninstall',
+1 verbose cli   'pm2' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.30
+4 verbose node_modules/pm2 unbuild
+5 info preuninstall pm2@3.5.0
+6 info uninstall pm2@3.5.0
+7 verbose true,/home/twstub/public_html/node_modules,/home/twstub/public_html/node_modules unbuild pm2@3.5.0
+8 verbose /home/twstub/public_html/node_modules/.bin,[object Object] binRoot
+9 info postuninstall pm2@3.5.0
+10 error Error: EACCES, unlink '/home/twstub/public_html/node_modules/pm2/.changelogrc'
+10 error  { [Error: EACCES, unlink '/home/twstub/public_html/node_modules/pm2/.changelogrc']
+10 error   errno: 3,
+10 error   code: 'EACCES',
+10 error   path: '/home/twstub/public_html/node_modules/pm2/.changelogrc' }
+11 error Please try running this command again as root/Administrator.
+12 error System Linux 3.10.0-862.14.4.el7.x86_64
+13 error command "/usr/local/bin/node" "/usr/local/bin/npm" "uninstall" "pm2"
+14 error cwd /home/twstub/public_html
+15 error node -v v0.10.30
+16 error npm -v 1.4.21
+17 error path /home/twstub/public_html/node_modules/pm2/.changelogrc
+18 error code EACCES
+19 error errno 3
+20 error stack Error: EACCES, unlink '/home/twstub/public_html/node_modules/pm2/.changelogrc'
+21 verbose exit [ 3, true ]

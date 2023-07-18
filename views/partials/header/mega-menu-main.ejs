@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en-US" class="no-js">
+	<head>
+
+	    <!--Added By Monik-->
+	    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!--  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158159793-1"></script>-->
+        <!--<script>-->
+        <!--  window.dataLayer = window.dataLayer || [];-->
+        <!--  function gtag(){dataLayer.push(arguments);}-->
+         <!-- gtag('js', new Date());-->
+
+       <!--   gtag('config', 'UA-158159793-1');-->
+        <!--</script>-->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+
+		<meta name="google-site-verification" content="ZcvDZRuI9MGiovlO5oKV5rmrtkXIVlCRu5AHx410o5I" />
+
+<!-- chandler added new code  -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160652164-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-160652164-1');
+	</script>
+
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXGM7ZQ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXGM7ZQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+        <!--Added By Monik-->
+
+		<title> <%- meta != undefined && meta['page_title'] != undefined && meta['page_title'] != '' ? meta['page_title'] : "Stub Boxoffice" -%> </title>
+		<meta charset="UTF-8">
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="shortcut icon" type="/images/favicon.ico" />
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="apple-touch-icon-precomposed" type="/images/favicon.ico" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<% if(meta['page_name'] != undefined) { %>
+		    <% if(meta['page_name'] == 'home') { %>
+		    <meta name="description" content='Stub Box Office is your ticket resell headquarters for concerts, sports, theatre, and more.'>
+		    <% } else { %>
+		    <meta name="description" content='<%- meta['page_title'] != '' ?  meta['page_title'] : ''  -%> Find the perfect seats now!'>
+		    <meta property="og:description" content='<%- meta['page_title'] != '' ?  meta['page_title'] : ''  -%> Find the perfect seats now!' />
+		    <% } %>
+		<% } else  { %>
+		<meta name="description" content=''>
+		<meta property="og:description" content='' />
+		<% }  %>
+
+
+
+
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="website" />
+		<% if (url && url.indexOf('events/sports')) { %>
+			<meta property="og:title" content="Sports Tickets | Tickets for Sports | Stub Box Office" />
+			<meta property="og:description" content="Buy and sell sports tickets on Stub Box Office. Resell your sports tickets." />
+		<% } else if (url && url.indexOf('events/concerts')) { %>
+			<meta property="og:title" content="Concert Tickets | Tickets for Concerts | Stub Box Office" />
+			<meta property="og:description" content="Buy and sell concert tickets on Stub Box Office. Resell your sports tickets." />
+		<% } else if (url && url.indexOf('events/theatre')) { %>
+			<meta property="og:title" content="Theatre Tickets | Tickets for Theatre | Stub Box Office" />
+			<meta property="og:description" content="Buy and sell theatre tickets on Stub Box Office. Resell your sports tickets." />
+		<% }else { %>
+			<meta property="og:title" content="Stub Boxoffice" />
+			<meta property="og:description" content="Stub Box Office is your ticket resell headquarters for concerts, sports, theatre, and more." />
+		<% } %>
+
+		<meta property="og:site_name" content="Stub Boxoffice" />
+		<!--Added M 22-apr-2020-->
+		<meta property="og:url" content="https://stubboxoffice.com/" />
+		<meta property="og:image" content="<%= home_url %>/public/img/favicon.ico" />
+
+		<!--<h1>ticket resell</h1>-->
+		<!--<h2>ticket resell</h2>-->
+		<!--<h3>ticket resell</h3>-->
+
+
+        <!-- google-site-verification-tag -->
+        <!-- <meta name="google-site-verification" content="vsPYOd-FMON4thAOAgveXYTfb9GiTb05OZK8DzuSCv4" /> -->
+        <!-- end of google-site-varification-tag-->
+
+
+		<!-- base css files -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- <link rel="stylesheet" type="text/css" href="<%- home_url %>/public/css/main.css"> -->
+
+		<!--Added REL Tag-->
+            <link rel="canonical" href="https://stubboxoffice.com/">
+         <!--END REL-->
+
+		<!-- Begin loop through all the css files -->
+		<%
+			if (css != undefined && css.length != 0) {
+				css.forEach(function(css_url) {
+		%>
+		<link rel="stylesheet" type="text/css" href="<%- css_url %>">
+		<%
+				});
+			}
+		%>
+		<!-- End loop through all the css files -->
+
+	</head>
+
+
+	<body>
+
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXGM7ZQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+		<%- include('./mega-menu-navigation', { home_url });  -%>

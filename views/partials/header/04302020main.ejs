@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="en-US" class="no-js">
+	<head>
+	    
+	    <!--Added By Monik-->
+	    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158159793-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-158159793-1');
+        </script>
+        <!--Added By Monik-->
+	    
+		<title> <%- meta != undefined && meta['page_title'] != undefined && meta['page_title'] != '' ? meta['page_title'] : "Stub Boxoffice" -%> </title>
+		<meta charset="UTF-8">
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="shortcut icon" type="/images/favicon.ico" />
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="apple-touch-icon-precomposed" type="/images/favicon.ico" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		<% if(meta['page_name'] != undefined) { %>
+		    <% if(meta['page_name'] == 'home') { %>
+		    <meta name="description" content='Find tickets for every kind of event including concerts, sports, theater, and more.'>
+		    <% } else { %>
+		    <meta name="description" content='<%- meta['page_title'] != '' ?  meta['page_title'] : ''  -%> Find the perfect seats now!'>
+		    <meta property="og:description" content='<%- meta['page_title'] != '' ?  meta['page_title'] : ''  -%> Find the perfect seats now!' />
+		    <% } %>
+		<% } else  { %>
+		<meta name="description" content=''>
+		<meta property="og:description" content='' />
+		<% }  %>
+		
+	
+		
+
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Stub Boxoffice" />
+		<meta property="og:site_name" content="Stub Boxoffice" />
+		<!--Added M 22-apr-2020-->
+		<meta property="og:url" content="https://stubboxoffice.com/" />
+		<meta property="og:image" content="<%= home_url %>/public/img/favicon.ico" />
+		<meta property="og:description" content="Find tickets for every kind of event including concerts, sports, theater, and more." />
+
+
+
+        <!-- google-site-verification-tag -->
+        <meta name="google-site-verification" content="vsPYOd-FMON4thAOAgveXYTfb9GiTb05OZK8DzuSCv4" />
+        <!-- end of google-site-varification-tag-->
+        
+		
+		<!-- base css files -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- <link rel="stylesheet" type="text/css" href="<%- home_url %>/public/css/main.css"> -->
+		
+		<!--Added REL Tag-->
+            <link rel="canonical" href="https://stubboxoffice.com/">
+         <!--END REL-->
+		
+		<!-- Begin loop through all the css files -->
+		<% 
+			if (css != undefined && css.length != 0) {
+				css.forEach(function(css_url) {
+		%>
+		<link rel="stylesheet" type="text/css" href="<%- css_url %>">
+		<%
+				});
+			}
+		%>
+		<!-- End loop through all the css files -->
+
+	</head>
+
+
+	<body>
+	    
+		<%- include('./navigation', { home_url });  -%>
