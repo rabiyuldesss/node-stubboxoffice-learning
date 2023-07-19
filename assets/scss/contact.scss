@@ -1,0 +1,169 @@
+
+$default_red: #dc4041; //#C52323;
+// $primary_color: #d82323; //#d55b5b;
+$secondary_color: #d82323; //#7f0707; //#690c10; //#be1e24; //#680404;
+$success: #36dc00;
+
+main {
+	#title {
+		margin: 35px 0 25px 0;
+
+		.inner {
+			h1.title {
+				font-size: 24px;
+				font-weight: 600;
+				margin: 0 10px 0 5px;
+			}
+		}
+	}
+
+	#contact {
+		padding: 0 0 50px 0;
+
+		.inner {
+			display: flex;
+			flex-flow: row nowrap;
+
+			#form {
+				width: 50%;
+				max-width: 500px;
+
+				form {
+					.input-wrapper {
+						margin: 0 0 15px 0;
+
+						label {
+							margin: 0 0 5px 0;
+							line-height: 12px;
+						}
+					}
+
+					input[type='submit'] {
+						&:hover {
+							background-color: $default_red !important;
+						}
+
+						&:disabled {
+							color: #333;
+							background-color: #c0c0c0;
+						}
+					}
+				}
+
+				#formResponse {
+					margin: 5px 0 0 0;
+					padding: 10px 20px;
+
+					height: 0;
+					display: none;
+					overflow: hidden;
+
+					* {
+						color: #fff;
+					}
+
+					&.show {
+						display: inherit;
+						height: auto;
+					}
+
+					&.success {
+						background-color: $success;
+					}
+
+					&.failure {
+						background-color: $secondary_color;
+					}
+
+					p {
+						display: flex;
+						flex-flow: row nowrap;
+						justify-content: space-between;
+						align-items: center;
+
+						margin: 0;
+						padding: 0;
+
+						span {
+							font-weight: 600;
+						}
+
+						i {
+							font-size: 12px;
+							// color: #fff;
+						}
+					}
+				}
+			}
+
+			#mailto {
+				width: calc(100% - 475px);
+				min-width: 50%;
+				margin: 0 0 0 25px;
+
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+				align-items: flex-start;
+
+				ul {
+					margin: 0;
+					padding: 25px 30px;
+					list-style: none;
+
+					background-color: $default_red;
+
+
+					li {
+						display: flex;
+						flex-flow: column;
+						align-items: center;
+
+						* {
+							color: #fff;
+							text-align: center;
+						}
+
+						&:first-of-type {
+							margin: 0 0 25px 0;
+						}
+
+						&:last-of-type {
+							margin: 25px 0 0 0;
+						}
+
+						h3 {
+							margin: 0 0 5px 0;
+							font-weight: 500;
+						}
+
+						p {}
+
+						a {
+							display: inline-block;
+							margin: 0 auto;
+							border-bottom: 1px dashed #fff;
+						}
+					}
+				}
+			}
+
+			@media (max-width: 600px) {
+				flex-flow: column;
+
+				#form, #mailto {
+					width: 100%;
+				}
+
+				#form {
+					max-width: none;
+				}
+
+				#mailto {
+					margin: 35px 0 0 0;
+				}
+			}
+
+		}
+	}
+}
