@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: admin
+    environment:
+      - DATABASE_URL=mysql://root@host.docker.internal:3306/stubbox
+      - FOREST_AUTH_SECRET=eb2a1e9988189368e22532079826537864e3933c562dcc487d9587ce37bb96940b69baf45f18712fc39e03e6dd720bd0
+      - FOREST_ENV_SECRET=58d73e510acd384d23d0a0585e8a1949275d0f9e9abf6cee09b0c720c52097e1
+      # - SSL_DATABASE=true
+      # - ENCRYPT_DATABASE=true
+      
+      
+    ports:
+      - "3001:3001"
