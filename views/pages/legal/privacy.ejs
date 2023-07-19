@@ -1,0 +1,29 @@
+
+
+<%- include('../../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<div class="header">
+		<img src="<%= header_img %>" id="page-header-img" alt="page-header">
+	</div>
+	
+	<div id="legal" class="section">
+		<div class="inner">
+			<h1 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> Privacy Policy </h1>
+
+			<div class="content">
+				<script type="text/javascript">
+					var bid = <%= bid %>;  // the customer id
+					var site = <%= site_num %>;  // the site number (not website config id)
+					document.write('<script language="javascript" src="https://tickettransaction.com/?bid='+bid+'&sitenumber='+site+'&tid=600" ></' + 'script>');
+				</script>
+			</div>
+		</div>
+	</div>
+
+</main>
+
+
+
+<%- include('../../partials/footer', { home_url, js });  -%>

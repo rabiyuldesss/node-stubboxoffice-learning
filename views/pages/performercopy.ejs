@@ -1,0 +1,219 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<!-- <div class="header" style="background-image: url(<% if (performer.banner_img_url != null) { %> <%= performer.banner_img_url %> <% } else { %> <%= header_img %> <% } %>); width: 100%; height: 250px; background-size: cover; background-position: center center;"></div> -->
+	<div class="header header-image">
+		<img src="<% if (performer.banner_img_url != null) { %> <%= performer.banner_img_url %> <% } else { %> <%= header_img %> <% } %>" id="page-header-img" alt="page-header">
+	</div>
+
+	<div class="content section">
+		<div class="inner">
+			<div id="info">
+				<div id="header">
+					<!-- <div class="img-container"> --> <!-- add-box-shadow -->
+						<!-- <img src="<%= home_url %>/public/img/performer/sport-placeholder.jpg"> -->
+						<% if (performer.performer_img_url != null) { %>
+							<img src="<%= performer.performer_img_url %>" class="add-box-shadow" alt="performer-img">
+						<% } %>
+					<!-- </div> -->
+					
+					<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> <%= performer.name %> Tickets </h3>
+					
+					<!-- <ul class="categories"></ul> -->
+				<!--	<% if (performer.description != null) { %>
+					<div class="text">
+						<%- performer.description %>
+					</div>
+					<% } %> -->
+				</div>
+
+				<div id="events">
+	<% if (events_list.length > 0) { %>
+						<div id="local">
+							<div class="inner">
+								<div class="local-header">
+									<span id="local-header-title" class="title"> Showing events near
+										<span style="text-decoration: underline; font-weight: bold;"><%= user_location.city %>, <%= user_location.state %>
+											<i class="fa fa-caret-down" aria-hidden="true"></i>
+										</span>
+									</span>
+
+									<div class="<%= local_events_list.length === 0 && (user_zipcode !== '' && user_zipcode !== undefined) ? 'hidden-zip-form' : 'hidden hidden-zip-form' %>">
+										<form id="zip-search" action="<%= home_url %>/tickets/<%= performer.performer_slug %>" method="get">
+											<div class="form-field-container">
+												<div class="form-input-container">
+													<input type="number" value="<%= user_zipcode %>" name="zipcode" id="zipcode" placeholder="Zipcode">
+													<button>Go</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+
+								<div class="result-container">								
+                     
+									<% if (local_events_list.length > 0) { %>
+
+
+										<ul id="local-data"></ul>
+
+
+									<% } else if (user_zipcode === '' || user_zipcode === undefined) { %>
+										<div class="stub-notice stub-notice-zipcode">
+											<p class="no-tickets"> Enter your zipcode to get the events nearest to you. </p>
+											<form id="zip-search" action="<%= home_url %>/tickets/<%= performer.performer_slug %>" method="get">
+												<div class="form-input-container">
+													<input type="number" value="" name="zipcode" id="zipcode" placeholder="Zipcode">
+													<button>Go</button>
+												</div>
+											</form>
+										</div>
+
+									<% } else { %>
+										<div class="stub-notice">
+											<p class="no-tickets"> Looks like there aren't any events near you. </p>
+											<p class="no-tickets-sub"> Check again at a later date. </p>
+										</div>
+									<% } %>
+								</div>
+
+							</div>
+						</div>
+
+
+						<div id="results">
+							<div class="inner">
+								<p class="title all-title"> All Events </p>
+								<div class="result-container">
+									<ul id="data"></ul>
+									<div id="pagination"></div>
+								</div>
+<% if (performer.description != null) { %>
+                                        <div class="text">
+                                                <%- performer.description %>
+                                        </div>
+                                        <% } %>						
+	</div>
+						</div>
+					<% } else { %>
+					<div class="stub-notice">
+						<p class="no-tickets"> Seems there aren't any upcoming events scheduled. </p>
+						<p class="no-tickets-sub"> Check again at a later date. </p>
+					</div>
+					<% } %>
+				</div>
+			</div>
+
+			<div id="side">
+				<div id="moneyback" class="side-card">
+					<h4 class="title"> 100% Money-Back Guarantee </h4>
+					<ul class="list">
+						<li>
+							<svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#fff" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>
+							<span>Your seats are together unless otherwise noted.</span>
+						</li>
+						<li>
+							<svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#fff" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>
+							<span>Tickets will be the ones you ordered or better.</span>
+						</li>
+						<li>
+							<svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="#fff" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>
+							<span>Tickets will arrive before the event.</span>
+						</li>
+					</ul>
+				</div>
+
+				<% if (similar_performers.length > 0 && similar_performers !== undefined) { %>
+				<div id="similar" class="side-card">
+					<h4 class="title"> You might also like... </h4>
+
+					<ul class="sim-list">
+						<% similar_performers.forEach(function(performer){ %>
+							<li> <a class="performer-link" href="<%= home_url %>/tickets/<%= performer.performer_slug %>"> - <%= performer.name %> </a> </li>
+						<% }); %>
+					</ul>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+<%- include('../partials/footer', { home_url, js });  -%>
+
+<!-- script for ticket list -->
+<script type="text/javascript">
+function listTemplate(data) {
+		var html = "";
+
+		$.each(data, function(index, event) {
+			var home_url = '<%- home_url %>';
+			var day = moment(event.date);
+
+			html += '<li>';
+			html += '<div class="event-date-time">';
+			html += '<p class="date">' + day.format('MMM Do, YYYY') + '</p>';
+			html += '<p class="daytime">' + day.format('ddd') + ', ' + day.format('h:mm A') + '</p>';
+			// html += '<p class="time">' +  + '</p>';
+			html += '</div>';
+
+			html += '<div class="event-info">';
+			html += '<a class="ename" href="' + home_url + '/event/' + event.id + '"> ' + event.name + ' </a>';
+			html += '<p class="emisc">' + event.venue + ' - ' + event.city + ', ' + event.stateprovince + '</p>';
+			html += '</div>';
+
+			html += '<div class="btn-container">';
+			html += '<a class="btn" href="' + home_url + '/event/' + event.id + '"> See Tickets </a>';
+			html += '</div>';
+
+			html += '</li>';
+		});
+
+		return html;
+	}
+
+	// check for local events before attempting
+	<% if (local_events_list.length > 0) { %>
+	var local_data = <%- JSON.stringify(local_events_list); %>;
+
+	$('#pagination').pagination({	
+	dataSource: local_data,
+		callback: function(local_data, pagination) {
+			// template method of yourself
+			var html = listTemplate(local_data);
+			$('#local-data').html(html);
+					
+                 }
+	});
+
+	<% } %>
+
+
+	var normal_data = <%- JSON.stringify(events_list); %>;
+
+	$('#pagination').pagination({
+		dataSource: normal_data,
+                callback: function(normal_data, pagination) {
+			// template method of yourself
+			var html = listTemplate(normal_data);
+			$('#data').html(html);
+                }
+	});
+
+	$(window).click(function() {
+		$('#local-header-title .hidden-zip-form').addClass("hidden");
+	});
+
+	$('#local-header-title span').on('click', function(event) {
+		event.stopPropagation();
+		$('#local .hidden-zip-form').toggleClass("hidden");
+	});
+
+</script>
+
+

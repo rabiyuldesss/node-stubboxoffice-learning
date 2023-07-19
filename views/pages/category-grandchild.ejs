@@ -1,0 +1,67 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css });  -%>
+
+<% var default_bg_img = home_url + "/public/img/default/stub-default-bg.jpg"; %>
+
+<main>
+	<!-- <div class="header" style="background-image: url(<%= //cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>);"></div> -->
+	<div class="header">
+		<img src="<%= cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>" id="page-header-img" alt="page-header">
+	</div>
+
+	<% if (performers.length > 4) { %>
+	<div id="featured" class="section">
+		<div class="inner">
+			<% for(let x = 0; x < 4; x++) { %>
+				<a class="f-performer" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>" style="background-image: url(<% if (performers[x].performer_img_url != null) { %> <%= performers[x].performer_img_url %> <% } else { %> <%= default_bg_img %> <% } %>);">
+					<p class="performer-name"> <%= performers[x].name %> </p>
+					<p class="btn"> See Tickets </p>
+				</a>
+			<% } %>
+		</div>
+	</div>
+
+	<div id="perform" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> <%= cat_info.grandchild_cat_name %> </h3>
+			<div id="p-links">
+				<% for(let x = 4; x < performers.length; x++) { %>
+					<a class="p-link" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+						<p class="performer-link"> <%= performers[x].name %> </p>
+						<div class="event-arrow" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+							<img src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow">
+						</div>
+					</a>
+				<% } %>
+			</div>
+		</div>
+	</div>
+
+	<% } else { %>
+
+	<div id="featured" class="section">
+		<div class="inner">
+			<% for(let x = 0; x < performers.length; x++) { %>
+				<a class="f-performer" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>" style="background-image: url(<% if (performers[x].performer_img_url != null) { %> <%= performers[x].performer_img_url %> <% } else { %> <%= default_bg_img %> <% } %>);">
+					<p class="performer-name"> <%= performers[x].name %> </p>
+					<p class="btn"> See Tickets </p>
+				</a>
+			<% } %>
+		</div>
+	</div>
+	<% } %>
+
+	<% if (cat_info.description != null) { %>
+	<div id="description" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> About <%= cat_info.grandchild_cat_name %> </h3>
+			<%- cat_info.description %>
+		</div>
+	</div>
+	<% } %>
+
+</main>
+
+
+<%- include('../partials/footer', { home_url, js });  -%>

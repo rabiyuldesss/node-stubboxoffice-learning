@@ -1,0 +1,21 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<!-- <div class="event-header header" style="background-image: url(<%= header_img %>); width: 100%; height: 250px; background-size: cover;"></div> -->
+	<div class="event-header header">
+		<img src="<%= header_img %>" id="page-header-img" alt="page-header">
+	</div>
+
+	<div id="tickets">
+		<div class="ticket-container" style="height: 900px !important;">
+			<script type="text/javascript" src="https://mapwidget3.seatics.com/js?eventId=<%= event_id %>&websiteConfigId=<%= ticketnetwork_id %>"></script>
+		</div>
+	</div>
+</main>
+
+
+<%- include('../partials/footer', { home_url, js });  -%>
+

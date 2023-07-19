@@ -1,0 +1,136 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css });  -%>
+
+<% var default_bg_img = home_url + "/public/img/default/stub-default-bg.jpg"; %>
+
+<main>
+	<!-- <div class="header" style="background-image: url(<%= //cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>);"></div> -->
+	<div class="header">
+		<img src="<%= cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>" id="page-header-img" alt="default background theatre tickets concert tickets">
+	</div>
+
+	<% if (performers.length > 4) { %>
+	<div id="featured" class="section">
+		<div class="inner">
+			<% for(let x = 0; x < 4; x++) { %>
+				<a class="f-performer" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>" style="background-image: url(<% if (performers[x].performer_img_url != null) { %> <%= performers[x].performer_img_url %> <% } else { %> <%= default_bg_img %> <% } %>);">
+					<p class="performer-name"> <%= performers[x].name %> </p>
+					<p class="btn"> See Tickets </p>
+				</a>
+			<% } %>
+		</div>
+	</div>
+
+	<div id="perform" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading theatre tickets concert tickets"> Now Trending in <%= category_page_title %> </h3>
+			<div id="p-links">
+				<% for(let x = 4; x < performers.length; x++) { %>
+					<a class="p-link" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+						<p class="performer-link"> <%= performers[x].name %> </p>
+						<div class="event-arrow" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+							<img src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow theatre tickets concert tickets">
+						</div>
+					</a>
+				<% } %>
+			</div>
+		</div>
+	</div>
+
+	<% } else { %>
+
+	<div id="featured" class="section">
+		<div class="inner">
+			<% for(let x = 0; x < performers.length; x++) { %>
+				<a class="f-performer" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>" style="background-image: url(<% if (performers[x].performer_img_url != null) { %> <%= performers[x].performer_img_url %> <% } else { %> <%= default_bg_img %> <% } %>);">
+					<p class="performer-name"> <%= performers[x].name %> </p>
+					<p class="btn"> See Tickets </p>
+				</a>
+			<% } %>
+		</div>
+	</div>
+	<% } %>
+
+	<div id="top-lists" class="section">
+		<div class="inner">
+			<% if (top_sellers.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top Selling <%= category_page_title %> </h4>
+				<ul class="list">
+					<% for (let ts = 0; ts < top_sellers.length; ts++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_sellers[ts].performer_slug %>"> <%= top_sellers[ts].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_cats.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top <%= category_page_title %> Categories </h4>
+				<ul class="list">
+					<% for (let tc = 0; tc < (top_cats.length > 6 ? 6 : top_cats.length); tc++) { %>
+						<li><a href="<%= home_url %>/events/<%= top_cats[tc].parent_cat_slug %>/<%= top_cats[tc].child_cat_slug %>"> <%= top_cats[tc].child_cat_name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_events.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top Events </h4>
+				<ul class="list">
+					<% for (let te = 0; te < (top_events.length > 6 ? 6 : top_events.length); te++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_events[te].performer_slug %>"> <%= top_events[te].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_events.length !== 0 && top_events.length > 6) { %>
+			<div class="compo">
+				<h4 class="title"> More <%= category_page_title %> Events </h4>
+				<ul class="list">
+					<% for (let te = 6; te < top_events.length; te++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_events[te].performer_slug %>"> <%= top_events[te].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+		</div>
+	</div>
+
+
+    <% if(category_page_title == "Concerts") { %>
+        <div style="padding: 20px; max-width: 90%; margin: 0px auto; font-size: 24px;">
+            <h2 style="font-weight: bold;color: #000; margin-bottom: 20px;">Concert Tickets</h2>
+            <p style="margin-bottom: 20px;">There was a time, not too long ago, that music fans would have to wait in long lines to get advanced tickets to see a favorite band or artist perform. In the 70’s, promoters and managers felt that the only way to satisfy the increased demand brought on by commercialization was to book larger venues that contained more seats. Halls became theaters, theaters turned to arenas, and arenas were bumped up to stadiums. Some concerts - more like festivals - required larger plots of land that would accommodate the masses of fans there to experience not just the music but the shared atmosphere as big-tickets bands played over the course of a few days like Bonnaroo or Lollapalooza. Back in the day, when these shows dates were announced, there would be a mad scramble to buy as many tickets as needed the moment those tickets went up for sale. Before, it was about who stood in line the longest, then it became who had the fastest fingers on a touch-tone phone. Today, with the convenience of being able to buy tickets online, concert goers have to sit patiently on their computers waiting for the timer to run down when tickets are open to sale. And even then, there was no guarantee that you’d beat the flood of on-liners to get the tickets you wanted. That’s where Stub Boxoffice comes in. Imagine someone waiting online to buy those tickets the moment they come up and then giving them to you when you’re ready. That’s what we do, get those tickets and make them available to you, without having to wait for the timer to reach zero. Doesn’t make a difference where you are, Stub Boxoffice is ready when you are, wherever you are. (and comes with 100% guarantee for all purchased tickets).</p>
+            <p style="margin-bottom: 20px;">Even though Stub Boxoffice has competition, the one thing concert goers can be assured of that sets Stub Boxoffice apart from the competitors is the reassurance that their tickets are guaranteed. Not only can you buy a ticket for yourself but you can purchase blocks of tickets so you and your family and friends can all attend a much sought-after show. </p>
+            <p style="margin-bottom: 20px;">It doesn’t matter what kind of music you’re into - Pop or K-Pop, Jazz or the Blues, Rap or Hip Hop, Country or Western, Classical, Hard Rock, Latin, Soul or Folk - Stub Boxoffice will give you access to all of them. Go to the Stub Boxoffice site and find your concert then navigate to the ticket purchase site and buy what you need and as many as needed. Great seat, fair price and the guarantee that your seat and show are waiting for you. And we can even get tickets to annual festival concerts like Coachella, Bonnaroo, Lollapalooza and Austin City Limits and other premium concert shows.</p>
+        </div>
+
+    <% } %>
+
+    <% if(category_page_title == "Theatre") { %>
+        <div style="padding: 20px; max-width: 90%; margin: 0px auto; font-size: 24px;">
+            <h2 style="font-weight: bold;color: #000; margin-bottom: 20px;">Theatre Tickets</h2>
+            <p style="margin-bottom: 20px;">Some of the earliest known theater can be traced back all the way back to the glorious days of Greece when the blind poet Homer wrote about the epic battle between Troy and Sparta in “The Illiad”. What became a story between the two warring factions read aloud on an overlook, evolved into a visual structured display that people could watch. Then came the three tragedians - Aeschylus, Sophocles and Euripedes - who each had their own style but brought about modern innovations elements such as the “duality of origins”, the existence of “The Other” and gender construction. Other playwrights like the Greek comedian Menander and social science historian Heodotus, were motivated to express their ideological point of views and common current affairs, following the theater framework of the three tragedians and helped to push theatrical conventions even further along. It was through these early playwrights that theater became a part of life, counted on to interpret the intentions of God and man while constructing the base of early philosophy through the teachings of Socrate, Plato and the first theatrical critique Aristotle who is also responsible for creating the “Elements of a Well-Written Play”. </p>
+            <p style="margin-bottom: 20px;">As theater became more of a vessel for entertainment, the government took note of the influence it has over the free-thinkers of the common people. During Roman rule, theater became more comedy than tragedy as a way to distract society from a crumbling polis. In Medieval theater, church and religion utilized the stage for liturgical and secular drama to utillize fear as a means of control. Then came Shakespeare who wrote in two styles of theater - Jacobian and Elizabethan - as a way of connecting the elite, privileged society with the commoners that made up the majority of the population. This gave rise to the Western ornate language and asymmetrical display of Baroque theater seen in Italy and France which paved the way for “Age of Enlightment” Neoclassical theater known for plays written with good sense and reason, distinct stage movements and decorative and visual arts. And this is where modern theater has taken over, built upon centuries of theatrical innovations, ideological playwrights, and the power of live performances that enabled creative thinking for the ever-growing, supportive audience. Today’s plays may not resemble antiquity performances but they owe much to its development.</p>
+            <p style="margin-bottom: 20px;">Theater is more alive than ever. Most cities have some sort of theater district -  like Drury Lane in England and Broadway (as well as Off-Broadway) in New York. There are still long lines of desperate patrons that want nothing more than to be entertained. Even though many of these plays are contemporary in style, you can still find venues and festivals that put on shows in the style of Dionysis theater, Shakesperean and Neoclassic. </p>
+            <p style="margin-bottom: 20px;">With Stub Boxoffice, you can feel assured that the tickets for some of the hardest shows to attend will be ready for you. Avoid the sold-out sign in front Hamilton or the Book of Mormon, buy your tickets in advance and head right over to the show. Whether it’s opera, a children’s play or some largely magnificent performance like Cirque Du Soleil or Blue Man Group, Stub Boxoffice will have the tickets you need when you need them. So quit waiting in lines out in the open, get online and grab those seats right next to the orchestra pit.</p>
+        </div>
+    <% } %>
+
+	<% if (cat_info.description != null) { %>
+	<div id="description" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading theatre tickets concert tickets"> About <%= cat_info.parent_cat_name %> </h3>
+			<%- cat_info.description %>
+		</div>
+	</div>
+	<% } %>
+
+</main>
+
+
+<%- include('../partials/footer', { home_url, js });  -%>

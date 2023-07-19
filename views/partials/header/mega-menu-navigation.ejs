@@ -1,0 +1,2632 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .clearfix:after,
+    .clearfix:before {
+        content: "";
+        clear: both;
+    }
+
+    .clearfix:after {
+        display: table;
+    }
+
+    /* Style the tab */
+    .tab {
+        float: left;
+        border-bottom: 1px solid #ccc;
+        width: 65%;
+        background-color: rgba(0,0,0,0.7);
+    }
+.nav-bg-enabled .tab,
+.nav-bg-enabled .tabcontent{
+    width: 100%;
+}
+    /* Style the buttons inside the tab */
+    .tab button {
+        display: block;
+        color: #fff;
+        padding: 10px 20px !important;
+        border-bottom: 3px solid transparent;
+        outline: none;
+        text-align: left;
+        cursor: pointer !important;
+        font-size: 15px !important;
+        border-radius: 0 !important;
+        float: left;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        border-bottom: 3px solid #dc4041;
+        color: #dc4041 !important;
+    }
+
+    /* Create an active/current "tab button" class */
+    .tab button.active {
+        border-bottom: 3px solid #dc4041 !important;
+        color: #dc4041;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+        float: left;
+        padding: 0px 12px;
+        width: 65%;
+        border-left: none;
+        display: none;
+        background-color: rgba(0,0,0,0.7);
+        max-height: 500px;
+        min-height: 250px;
+        overflow-y: auto;
+
+    }
+
+    .tabcontent .list-horizon {
+        width: 33%;
+        float: left;
+    }
+
+    .full-width-list {
+        width: 100% !important;
+        border-top: 1px solid #ccc;
+    }
+
+    .full-width-list a {
+        padding: 10px;
+        display: block;
+        margin: 0px;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+        color: #dc4041 !important;
+    }
+
+    /* .menu-container .manu ul li ul ul:first-of-type {
+	display: block !important;
+  } */
+    /*=================================*/
+    .menu-container {
+        width: 100%;
+        display: none;
+        z-index: 100;
+        margin: 0 auto 0 auto;
+        /* background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.2),rgba(0,0,0,.0)) */
+    }
+
+    .menu-container:after,
+    .menu-container:before {
+        content: "";
+        clear: both;
+    }
+
+    .menu-container:after {
+        display: table;
+    }
+
+    .menu-container .manu {
+        width: 95%;
+        display: block;
+        position: relative;
+        margin: 0 auto 0 auto;
+    }
+
+    .menu ul:before,
+    .menu ul:after {
+        content: "";
+        display: table;
+    }
+
+    .menu ul:after {
+        clear: both;
+    }
+
+    .menu:before,
+    .menu:after {
+        content: "";
+        display: table;
+    }
+
+    .menu:after {
+        clear: both;
+    }
+
+    .menu ul li ul:before,
+    .menu ul li ul:after {
+        content: "";
+        display: table;
+    }
+
+    .menu ul li ul:after {
+        clear: both;
+    }
+    .list-horizon li {
+        float: none !important;
+        /* background-color: transparent; */
+    }
+    .menu-container .manu ul li {
+        float: left;
+        background-color: transparent;
+    }
+
+    .menu-container .manu ul li a {
+        display: block;
+        padding: 15px 25px;
+        color: #fff;
+        font-size: 16px;
+        transition: .2s;
+    }
+
+    .menu-container .manu ul li ul li a {
+        display: block;
+        padding: 8px;
+        color: #fff;
+        font-size: 13px;
+        transition: .2s;
+    }
+
+    .menu-container .manu ul li ul li:hover {
+        background-color: #000;
+    }
+
+    .menu-container .manu ul li a span {
+        transition: .3s all ease-out;
+        line-height: 0px;
+    }
+
+    .menu-container .manu ul li a:hover span {
+        transform: rotate(180deg);
+        padding-right: 5px;
+    }
+
+    span.drop_down_icon {
+        color: #fff;
+        padding-left: 5px;
+        font-size: 18px;
+        position: absolute;
+        margin-top: 11px;
+    }
+
+    .menu-container .manu ul li .have_dropdown {
+        background-color: transparent;
+        position: absolute;
+        /*	left: 0;*/
+        display: none;
+        width: 100%;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style {
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        display: none;
+        width: 100%;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style li a {
+        color: #dc4041;
+        border-bottom: 1px solid #fff;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style li ul li a {
+        color: #252525;
+        border-bottom: none;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style li ul li a:hover {
+        color: #dc4041;
+        font-weight: normal;
+        background-color: #fafafa;
+        text-decoration: underline;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style li {
+        width: 25%;
+        float: left;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style {
+        background-color: #fff;
+    }
+
+    .menu-container .manu ul li .have_dropdown li a {
+        /* float: left; */
+        color: #fff;
+        /* background-color: #fff; */
+        font-weight: normal;
+    }
+
+    .menu-container .manu ul li .have_dropdown li ul li {
+        display: none;
+    }
+
+    .menu-container .manu ul li .have_dropdown_n_style li ul li {
+        background-color: #fff;
+        height: auto;
+        float: none;
+        display: block;
+        width: 100%;
+    }
+
+    .nav_menu_toggler_icon {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0%;
+        background: none;
+        color: #fff;
+        font-size: 30px !important;
+        z-index: 150;
+        display: none;
+        border: none;
+        background-color: transparent !important;
+    }
+
+    .nav_menu_toggler_icon span {
+        padding: 2px 7px;
+        border-radius: 8px;
+    }
+
+    .nav_menu_toggler_icon:active {
+        color: #ddd;
+    }
+
+    .container_help {
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    .container_help h2,
+    .container_help h1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+    nav.nav-bg-enabled #main-nav .inner .content #nav-search{
+        display: block !important;
+        background-color:#000;
+        padding-top: 15px;
+    }
+
+    @media only screen and (max-width: 756px) {
+        .menu-container .manu ul li .have_dropdown li ul li {
+            display: block !important;
+        }
+
+        .desktop-menu {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: block;
+        }
+
+        .tab,
+        .tab button,
+        .tabcontent {
+            width: 100%;
+        }
+
+        .nav_menu_toggler_icon {
+            display: block;
+        }
+
+        .mobile-btns {
+            position: absolute;
+            right: 20%;
+            top: 25%;
+        }
+
+        .menu-container .manu {
+            display: none;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            background-color: #252525;
+            top: 70%;
+        }
+
+        .menu-container .manu ul li {
+            float: none;
+            display: block;
+        }
+
+        .menu-container .manu ul li .have_dropdown {
+            background-color: transparent;
+            display: none;
+            position: relative;
+            max-height: 280px;
+            min-height: 240px;
+            overflow-y: auto;
+        }
+
+        .menu-container .manu ul li .have_dropdown li a {
+            color: #dc4041;
+            font-weight: 600;
+        }
+
+        .menu-container .manu ul li .have_dropdown li ul li a {
+            color: #252525;
+            font-weight: normal !important;
+        }
+
+        .menu-container .manu ul li .have_dropdown li {
+            display: block;
+            float: none;
+            width: 100%;
+            background-color: #fff !important;
+        }
+
+        .menu-container .manu ul li .have_dropdown li a {
+            display: block;
+            float: none;
+            width: 100%;
+            padding: 5px 40px !important;
+            font-size: 13px;
+        }
+
+        .menu-container .manu ul li .have_dropdown_n_style li {
+            width: 100%;
+            float: none;
+        }
+
+        .menu-container .manu ul li .have_dropdown_n_style li a {
+            float: none;
+        }
+
+        .menu-container .manu ul li .have_dropdown_n_style {
+            position: relative;
+        }
+    }
+    .font-weight-bold{
+        font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 7px 8px !important;
+    }
+</style>
+
+
+<nav role="navigation" id="navigation" class="nav-initial-pos">
+
+    <div id="main-nav" class="section">
+        <div class="inner">
+            <div class="content">
+                <div class="left">
+                    <a href="https://stubboxoffice.com/" class="logo-container">
+                        <img src="https://stubboxoffice.com/public/img/stubbox-logo.png" alt="Stubbox">
+                    </a>
+
+                    <div class="menu-container clearfix">
+                        <button class="nav_menu_toggler_icon"><span class="fa fa-bars"></span></button>
+                        <div class="manu clearfix">
+                            <ul class="desktop-menu">
+                                <li><a href="<%- home_url %>/events/sports/">Sports</a>
+                                    <ul class="tabs-dropdown">
+                                        <div class="tab">
+                                            <button class="tablinks t-list1 active"
+                                                onmouseover="openCity(event, 'stub_1')" onclick="location.href='<%- home_url %>/events/sports/baseball/professional-mlb/'" type="button">MLB</button>
+                                            <button class="tablinks t-list1"
+                                                onmouseover="openCity(event, 'stub_2')" onclick="location.href='<%- home_url %>/events/sports/basketball/professional-nba/'" type="button">NBA</button>
+                                            <button class="tablinks t-list1"
+                                                onmouseover="openCity(event, 'stub_3')" onclick="location.href='<%- home_url %>/events/sports/football/nfl/'" type="button">NFL</button>
+                                            <button class="tablinks t-list1"
+                                                onmouseover="openCity(event, 'stub_4')" onclick="location.href='<%- home_url %>/events/sports/hockey/professional-nhl/'" type="button">NHL</button>
+                                        </div>
+
+                                        <div id="stub_1" class="tabcontent list-1" style="display:block">
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-all-star-game/" class="font-weight-bold">MLB All Star Game</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-opening-day/" class="font-weight-bold">MLB Opening Day</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-playoffs/" class="font-weight-bold">MLB Playoffs</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/world-series/" class="font-weight-bold">World Series</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/boston-red-sox/">Boston Red Sox</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-cubs/">Chicago Cubs</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-white-sox/">Chicago White Sox</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/cincinnati-reds/">Cincinnati Reds</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/cleveland-indians/">Cleveland Indians</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/colorado-rockies/">Colorado Rockies</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/delioit-tigers/">Delioit Tigers</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/houston-aslios/">Houston Astros</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/kansas-city-royals/">Kansas City Royals</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-dodgers/">Los Angeles Dodgers</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/miami-marlins/">Miami Marlins</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/milwaukee-brewers/">Milwaukee Brewers</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/minnesota-twins/">Minnesota Twins</a>
+                                            </li>
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-home-run-derby/">MLB Home Run Derby</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-mexico/">MLB Mexico</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/oakland-athletics/">Oakland Athletics</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/philadelphia-phillies/">Philadelphia Phillies</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/pittsburgh-pirates/">Pittsburgh Pirates</a>
+                                            </li>
+                                       
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/san-diego-padres/">San Diego Padres</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/san-francisco-giants/">San Francisco Giants</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/seattle-mariners/">Seattle Mariners</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/st-louis-cardinals/">St. Louis Cardinals</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/tampa-bay-rays/">Tampa Bay Rays</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/texas-rangers/">Texas Rangers</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/toronto-blue-jays/">Toronto Blue Jays</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/washington-nationals/">Washington Nationals</a>
+                                            </li>
+                                        </ul>
+                                                                                    <!-- <li>
+                                                <a href="<%- home_url %>/tickets/new-york-mets">New York Mets</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-yankees">New York Yankees</a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<%- home_url %>/tickets/mlb-legends-and-celebrity-softball-game">MLB
+                                                    Legends &amp;Celebrity Softball Game</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-all-star-play-ball-park">MLB
+                                                    All-Star Play Ball Park</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-futures-game">MLB Futures Game</a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/american-league-championship-series">American
+                                                    League Championship Series</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/national-league-championship-series">National
+                                                    League Championship Series</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/national-league-division-series">National
+                                                    League Division Series</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/american-league-division-series">American
+                                                    League Division Series</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/wild-card-game">WildCard Game</a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nl-wild-card-game">NL Wild Card
+                                                    Game</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/al-wild-card-game">AL Wild Card
+                                                    Game</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/spring-liaining">Spring liaining</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nl-playoff-tiebreaker">NL Playoff
+                                                    Tiebreaker</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mlb-puerto-rico">MLB Puerto Rico</a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/big-league-weekend-series">Big League
+                                                    Weekend Series</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/toronto-blue-jays-winter-fest">Toronto
+                                                    Blue Jays Winter Fest</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-mets-fanfest">New York Mets
+                                                    Fan Fest</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/atlanta-braves-hot-stove-qanda">Atlanta
+                                                    Braves Hot StoveQanda</a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/texas-rangers-futures">Texas Rangers
+                                                    Futures</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/qa-performer-2">QA Performer 2</a>
+                                            </li> -->
+
+
+                                            <li class="full-width-list"><a
+                                                    href="<%- home_url %>/events/sports/baseball/professional-mlb/">View All MLB Tickets</a></li>
+                                            </div>
+
+
+                                        <div id="stub_2" class="tabcontent list-1">
+
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-playoffs" class="font-weight-bold">NBA Playoffs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-finals" class="font-weight-bold">NBA Finals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-game" class="font-weight-bold">NBA All Star Game
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/atlanta-hawks/">Atlanta Hawks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/brooklyn-nets/">Brooklyn Nets
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/charlotte-hornets/">Charlotte Hornets
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-bulls/">Chicago Bulls
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/cleveland-cavaliers/">Cleveland Cavaliers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/golden-state-warriors/">Golden State
+                                                    Warriors
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/houston-rockets/">Houston Rockets
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/indiana-pacers/">Indiana Pacers
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-lakers/">Los Angeles Lakers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-clippers/">Los Angeles Clippers
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/memphis-grizzlies/">Memphis Grizzlies
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/miami-heat/">Miami Heat
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/milwaukee-bucks/">Milwaukee Bucks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/minnesota-timberwolves/">Minnesota Timberwolves
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-orleans-pelicans/">New Orleans Pelicans
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-knicks/">New York Knicks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/oklahoma-city-thunder/">Oklahoma City Thunder
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/orlando-magic/">Orlando Magic
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/philadelphia-76ers/">Philadelphia 76ers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/phoenix-suns/">Phoenix Suns
+                                                </a>
+                                            </li>
+
+                                           <li>
+                                                <a href="<%- home_url %>/tickets/portland-liail-blazers/">Portland trail Blazers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/sacramento-kings/">Sacramento Kings
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/san-antonio-spurs/">San Antonio Spurs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/toronto-raptors/">Toronto Raptors
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/utah-jazz/">Utah Jazz
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/washington-wizards/">Washington Wizards
+                                                </a>
+                                            </li>
+                                        </ul>
+                                            <!-- 
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-rising-stars-challenge">NBA Rising
+                                                    Stars Challenge
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-saturday-night">NBA All
+                                                    Star Saturday Night
+                                                </a>
+                                            </li>
+                                          
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-preseason">NBA Preseason
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-cenlie-court">NBA Cenlie Court
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-conference-finals">NBA Conference
+                                                    Finals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-conference-semifinals">NBA
+                                                    Conference Semifinals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-first-round">NBA First Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/california-classic">California Classic
+                                                </a>
+                                            </li>
+                                           <li>
+                                                <a href="<%- home_url %>/tickets/leinster">Leinster
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<%- home_url %>/tickets/gateway-dirt-nationals-preliminary-night">Gateway
+                                                    Dirt Nationals Preliminary Night
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nascar-speedway-chevrolet-night">NASCAR
+                                                    Speedway Chevrolet Night
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-late-models">Super Late Models
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/friday-night-monster-liucks">Friday
+                                                    Night Monster liucks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/kit-kat-rivalry-weekend">Kit Kat
+                                                    Rivalry Weekend
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/polka-n-coliseum-polo">Polka N Coliseum
+                                                    Polo
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/monster-liucks-and-racing">Monster
+                                                    liucks and Racing
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-mexico">NBA Mexico
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-practice">NBA All Star
+                                                    Practice
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-celebrity-game">NBA All
+                                                    Star Celebrity Game
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-media-day">NBA All Star
+                                                    Media Day
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-all-star-weekend">NBA All Star
+                                                    Weekend
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-western-conference-first-round">NBA
+                                                    Western Conference First Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-western-conference-semifinals">NBA
+                                                    Western Conference Semifinals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nba-london">NBA London
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/jr-nba-youth-world-championship">Jr.
+                                                    NBA Youth World Championship
+                                                </a>
+                                            </li>-->
+                                              <li class="full-width-list"><a
+                                                    href="<%- home_url %>/events/sports/basketball/professional-nba/">View All NBA Tickets</a></li> 
+                                              </div>
+
+                                        <div id="stub_3" class="tabcontent list-1">
+
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-pro-football-hall-of-fame-game/" class="font-weight-bold">
+                                                    Hall of Fame Game
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-pro-bowl/" class="font-weight-bold"> NFL Pro Bowl
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-experience/" class="font-weight-bold">
+                                                    Super Bowl Experience
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-party/" class="font-weight-bold">
+                                                    Super Bowl Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-steinberg-party/" class="font-weight-bold">
+                                                    Super Bowl Steinberg Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-leather-and-laces/" class="font-weight-bold">
+                                                    Super Bowl Leather & Laces
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-parking-passes/" class="font-weight-bold">
+                                                    Super Bowl Parking
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-bears/"> Chicago Bears
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/carolina-panthers/">
+                                                    Carolina Panthers
+                                                </a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/cincinnati-bengals/">
+                                                    Cincinnati Bengals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/cleveland-browns/">
+                                                    Cleveland Browns
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/dallas-cowboys/"> Dallas
+                                                    Cowboys
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/denver-broncos/"> Denver Broncos
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/delioit-lions/"> Delioit Lions
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/green-bay-packers/"> Green Bay Packers
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/houston-texans/"> Houston Texans
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/indianapolis-colts/">
+                                                    Indianapolis Colts
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/jacksonville-jaguars/">
+                                                    Jacksonville Jaguars
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/kansas-city-chiefs/">
+                                                    Kansas City Chiefs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/las-vegas-raiders/">Las Vegas Raiders</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-chargers/">
+                                                    Los Angeles Chargers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-rams/">
+                                                    Los Angeles Rams
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/miami-dolphins/"> Miami Dolphins
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/minnesota-vikings/">
+                                                    Minnesota Vikings
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-england-paliiots/">
+                                                    New England Paliiots
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-orleans-saints/"> New Orleans Saints
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-jets/"> New York Jets
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-draft/"> NFL Draft
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/philadelphia-eagles/">
+                                                    Philadelphia Eagles
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/pittsburgh-steelers/">
+                                                    Pittsburgh Steelers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/san-francisco-49ers/"> San
+                                                    Francisco 49ers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/seattle-seahawks/">
+                                                    Seattle Seahawks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/tampa-bay-buccaneers/">
+                                                    Tampa Bay Buccaneers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/tennessee-titans/">
+                                                    Tennessee Titans
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/washington-redskins/">
+                                                    Washington Redskins
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-giants/"> New York Giants
+                                                </a>
+                                            </li>
+                                        </ul>
+                                           
+                                            <!-- <li>
+                                                <a href="<%- home_url %>/tickets/oakland-raiders"> Oakland
+                                                    Raiders
+                                                </a>
+                                            </li>
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-rams"> Los
+                                                    Angeles Rams
+                                                </a>
+                                            </li>
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl"> Super Bowl
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/afc-playoffs"> AFC
+                                                    Playoffs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/afc-championship"> AFC
+                                                    Championship
+                                                </a>
+                                            </li>
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-preseason"> NFL
+                                                    Preseason
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/houston-texans-draft-party">
+                                                    Houston Texans Draft Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/kansas-city-chiefs-vip-tailgate">
+                                                    Kansas City Chiefs VIP Tailgate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-bears-family-fest">
+                                                    Chicago Bears Family Fest
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-london"> NFL London
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-mexico"> NFL Mexico
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<%- home_url %>/tickets/40-yards-of-gold-all-star-speed-tournament">
+                                                    40 Yards of Gold All-Star Speed Tournament
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/atlanta-falcons-liaining-camp">
+                                                    Atlanta Falcons liaining Camp
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<%- home_url %>/tickets/green-bay-packers-family-night-liaining-camp">
+                                                    Green Bay Packers Family Night - liaining Camp
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/carolina-panthers-fan-fest">
+                                                    Carolina Panthers Fan Fest
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/all-pro-tailgate-party">
+                                                    All Pro Tailgate Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/premium-tailgate-game-day-party">
+                                                    Premium Tailgate Game Day Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<%- home_url %>/tickets/steelers-hall-of-onor-induction-ceremony">
+                                                    Steelers Hall of Honor Induction Ceremony
+                                                </a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/4-girls-4-the-musical"> 4
+                                                    Girls 4 - The Musical
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/2019-world-100"> 2019
+                                                    World 100
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/tailgate-guys-vip-tailgate">
+                                                    Tailgate Guys VIP Tailgate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/ticketbash-tailgate">
+                                                    Ticketbash Tailgate
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfc-playoffs"> NFC
+                                                    Playoffs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfl-playoffs"> NFL
+                                                    Playoffs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nfc-championship"> NFC
+                                                    Championship
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-party"> Super
+                                                    Bowl Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-leigh-steinberg-party">
+                                                    Super Bowl Leigh Steinberg Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/super-bowl-leather-and-laces">
+                                                    Super Bowl Leather And Laces
+                                                </a>
+                                            </li>
+                                           
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/gameday-tailgate-experience">
+                                                    Gameday Tailgate Experience
+                                                </a>
+                                            </li> -->
+
+
+                                            <li class="full-width-list"><a
+                                                    href="<%- home_url %>/events/sports/football/nfl/">View All NFL Tickets</a></li>
+
+                                        </div>
+
+                                        <div id="stub_4" class="tabcontent list-1">
+                                        <ul class="list-horizon">  
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-all-star-game/" class="font-weight-bold"> NHL All Star Game
+                                                </a>
+                                            </li>   
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-playoffs/" class="font-weight-bold"> NHL Playoffs
+                                                </a>
+                                            </li>   
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-stanley-cup-finals/" class="font-weight-bold">
+                                                    NHL Stanley Cup Finals
+                                                </a>
+                                            </li>                                
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/anaheim-ducks/"> Anaheim Ducks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/arizona-coyotes/"> Arizona Coyotes
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-blackhawks/">Chicago Blackhawks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/colorado-avalanche/">
+                                                    Colorado Avalanche
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/columbus-blue-jackets/">
+                                                    Columbus Blue Jackets
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/dallas-stars/"> Dallas Stars
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/delioit-red-wings/">
+                                                    Detroit Red Wings
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/edmonton-oilers/">
+                                                    Edmonton Oilers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/florida-panthers/">
+                                                    Florida Panthers
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/forliess-invitational/">
+                                                    Fortress Invitational
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/los-angeles-kings/"> Los Angeles Kings
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/minnesota-wild/">
+                                                    Minnesota Wild
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/monlieal-canadiens/">
+                                                    Montreal Canadiens
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nashville-predators/">
+                                                    Nashville Predators
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-jersey-devils/"> New Jersey Devils
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-islanders/"> New York Islanders
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-rangers/"> New York Rangers
+                                                </a>
+                                            </li>
+                                          
+                                          <li>
+                                                <a href="<%- home_url %>/tickets/nhl-all-star-weekend/">
+                                                    NHL All Star Weekend
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-stadium-series/"> NHL Stadium Series
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nyi-Viewing-Party/">NYI Viewing Party</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-horizon">
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/ottawa-senators/"> Ottawa Senators
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/philadelphia-flyers/">
+                                                    Philadelphia Flyers
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/pittsburgh-penguins/">
+                                                    Pittsburgh Penguins
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/san-jose-sharks/"> San Jose Sharks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/st-louis-blues/"> St. Louis Blues
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/tampa-bay-lightning/">
+                                                    Tampa Bay Lightning
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/toronto-maple-leafs/">
+                                                    Toronto Maple Leafs
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/vancouver-canucks/">
+                                                    Vancouver Canucks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/vegas-golden-knights/">
+                                                    Vegas Golden Knights
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/washington-capitals/">
+                                                    Washington Capitals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/winnipeg-jets/"> Winnipeg Jets
+                                                </a>
+                                            </li>
+                                            </ul>
+                                           
+                                           
+                                            <!-- 
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-skills-competition">
+                                                    NHL Skills Competition
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-conference-finals">
+                                                    NHL Conference Finals
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-playoffs"> NHL
+                                                    Playoffs
+                                                </a>
+                                            </li>
+                                           
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-global-series"> NHL
+                                                    Global Series
+                                                </a>
+                                            </li>
+                                          
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-winter-classic"> NHL
+                                                    Winter Classic
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-eastern-conference-first-round">
+                                                    NHL Eastern Conference First Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-eastern-conference-second-round">
+                                                    NHL Eastern Conference Second Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-western-conference-first-round">
+                                                    NHL Western Conference First Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-western-conference-second-round">
+                                                    NHL Western Conference Second Round
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/winnipeg-jets-viewing-party">
+                                                    Winnipeg Jets Viewing Party
+                                                </a>
+                                            </li>
+                                           
+                                           
+                                           
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-preseason"> NHL
+                                                    Preseason
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/chicago-blackhawks-liaining-camp">
+                                                    Chicago Blackhawks liaining Camp
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-prospects-challenge">
+                                                    NHL Prospects Challenge
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/rookie-showcase"> Rookie
+                                                    Showcase
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/rookie-faceoff"> Rookie
+                                                    Faceoff
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/mann-cup-2019"> Mann Cup
+                                                    2019
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-rangers-2019-alumni-classic">
+                                                    New York Rangers 2019 Alumni Classic
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/nhl-fan-fair"> NHL Fan
+                                                    Fair
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/new-york-islanders-viewing-party">
+                                                    New York Islanders Viewing Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/delioit-red-wings-viewing-party">
+                                                    Delioit Red Wings Viewing Party
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<%- home_url %>/tickets/delioit-red-wings-viewing-party">Delioit
+                                                    Red Wings Viewing Party
+                                                </a>
+                                            </li> -->
+
+
+                                            <li class="full-width-list"><a
+                                                    href="<%- home_url %>/events/sports/hockey/professional-nhl/">View All NHL Tickets</a></li>
+
+                                            </div>
+
+                                    </ul>
+                                </li>
+                                <li><a href="<%- home_url %>/events/concerts/"> Concerts </a></li>
+                                <li><a href="<%- home_url %>/events/theatre/">Theatre</a></li>
+                                <li><a href="<%- home_url %>/events/other/"> Other </a></li>
+                            </ul>
+
+                            <ul class="mobile-menu">
+                                <li>
+                                    <a href="<%- home_url %>/events/sports/">Sports</a>
+                                    <ul>
+                                        <li>
+                                            <a href="<%- home_url %>/events/sports/baseball/professional-mlb/">MLB</a>
+                                            <ul>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-all-star-game/" class="font-weight-bold">MLB All Star Game</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-opening-day/" class="font-weight-bold">MLB Opening Day</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-playoffs/" class="font-weight-bold">MLB Playoffs</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/world-series/" class="font-weight-bold">World Series</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/boston-red-sox/">Boston Red Sox</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-cubs/">Chicago Cubs</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-white-sox/">Chicago White Sox</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/cincinnati-reds/">Cincinnati Reds</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/cleveland-indians/">Cleveland Indians</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/colorado-rockies/">Colorado Rockies</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/delioit-tigers/">Delioit Tigers</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/houston-aslios/">Houston Astros</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/kansas-city-royals/">Kansas City Royals</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-dodgers/">Los Angeles Dodgers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/miami-marlins/">Miami Marlins</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/milwaukee-brewers/">Milwaukee Brewers</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/minnesota-twins/">Minnesota Twins</a>
+                                                </li>
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-home-run-derby/">MLB Home Run Derby</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-mexico/">MLB Mexico</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/oakland-athletics/">Oakland Athletics</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/philadelphia-phillies/">Philadelphia Phillies</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/pittsburgh-pirates/">Pittsburgh Pirates</a>
+                                                </li>
+                                           
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/san-diego-padres/">San Diego Padres</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/san-francisco-giants/">San Francisco Giants</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/seattle-mariners/">Seattle Mariners</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/st-louis-cardinals/">St. Louis Cardinals</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/tampa-bay-rays/">Tampa Bay Rays</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/texas-rangers/">Texas Rangers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/toronto-blue-jays/">Toronto Blue Jays</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/washington-nationals/">Washington Nationals</a>
+                                                </li>
+
+                                                                                        <!-- <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-mets">New York Mets</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-yankees">New York Yankees</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="<%- home_url %>/tickets/mlb-legends-and-celebrity-softball-game">MLB
+                                                        Legends &amp;Celebrity Softball Game</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-all-star-play-ball-park">MLB
+                                                        All-Star Play Ball Park</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-futures-game">MLB Futures Game</a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/american-league-championship-series">American
+                                                        League Championship Series</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/national-league-championship-series">National
+                                                        League Championship Series</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/national-league-division-series">National
+                                                        League Division Series</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/american-league-division-series">American
+                                                        League Division Series</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/wild-card-game">WildCard Game</a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nl-wild-card-game">NL Wild Card
+                                                        Game</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/al-wild-card-game">AL Wild Card
+                                                        Game</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/spring-liaining">Spring liaining</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nl-playoff-tiebreaker">NL Playoff
+                                                        Tiebreaker</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mlb-puerto-rico">MLB Puerto Rico</a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/big-league-weekend-series">Big League
+                                                        Weekend Series</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/toronto-blue-jays-winter-fest">Toronto
+                                                        Blue Jays Winter Fest</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-mets-fanfest">New York Mets
+                                                        Fan Fest</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/atlanta-braves-hot-stove-qanda">Atlanta
+                                                        Braves Hot StoveQanda</a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/texas-rangers-futures">Texas Rangers
+                                                        Futures</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/qa-performer-2">QA Performer 2</a>
+                                                </li> -->
+    
+    
+                                                <li class="full-width-list"><a
+                                                        href="<%- home_url %>/events/sports/baseball/professional-mlb/">View All MLB Tickets</a></li>
+                                                                                      </ul>
+                                        </li>
+                                        <li>
+                                            <a href="<%- home_url %>/events/sports/basketball/professional-nba/">NBA</a>
+                                            <ul>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-playoffs" class="font-weight-bold">NBA Playoffs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-finals" class="font-weight-bold">NBA Finals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-game" class="font-weight-bold">NBA All Star Game
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/atlanta-hawks/">Atlanta Hawks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/brooklyn-nets/">Brooklyn Nets
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/charlotte-hornets/">Charlotte Hornets
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-bulls/">Chicago Bulls
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/cleveland-cavaliers/">Cleveland Cavaliers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/golden-state-warriors/">Golden State
+                                                        Warriors
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/houston-rockets/">Houston Rockets
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/indiana-pacers/">Indiana Pacers
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-lakers/">Los Angeles Lakers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-clippers/">Los Angeles Clippers
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/memphis-grizzlies/">Memphis Grizzlies
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/miami-heat/">Miami Heat
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/milwaukee-bucks/">Milwaukee Bucks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/minnesota-timberwolves/">Minnesota Timberwolves
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-orleans-pelicans/">New Orleans Pelicans
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-knicks/">New York Knicks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/oklahoma-city-thunder/">Oklahoma City Thunder
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/orlando-magic/">Orlando Magic
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/philadelphia-76ers/">Philadelphia 76ers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/phoenix-suns/">Phoenix Suns
+                                                    </a>
+                                                </li>
+    
+                                               <li>
+                                                    <a href="<%- home_url %>/tickets/portland-liail-blazers/">Portland trail Blazers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/sacramento-kings/">Sacramento Kings
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/san-antonio-spurs/">San Antonio Spurs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/toronto-raptors/">Toronto Raptors
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/utah-jazz/">Utah Jazz
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/washington-wizards/">Washington Wizards
+                                                    </a>
+                                                </li>
+
+                                                <!-- 
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-rising-stars-challenge">NBA Rising
+                                                        Stars Challenge
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-saturday-night">NBA All
+                                                        Star Saturday Night
+                                                    </a>
+                                                </li>
+                                              
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-preseason">NBA Preseason
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-cenlie-court">NBA Cenlie Court
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-conference-finals">NBA Conference
+                                                        Finals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-conference-semifinals">NBA
+                                                        Conference Semifinals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-first-round">NBA First Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/california-classic">California Classic
+                                                    </a>
+                                                </li>
+                                               <li>
+                                                    <a href="<%- home_url %>/tickets/leinster">Leinster
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="<%- home_url %>/tickets/gateway-dirt-nationals-preliminary-night">Gateway
+                                                        Dirt Nationals Preliminary Night
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nascar-speedway-chevrolet-night">NASCAR
+                                                        Speedway Chevrolet Night
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-late-models">Super Late Models
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/friday-night-monster-liucks">Friday
+                                                        Night Monster liucks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/kit-kat-rivalry-weekend">Kit Kat
+                                                        Rivalry Weekend
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/polka-n-coliseum-polo">Polka N Coliseum
+                                                        Polo
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/monster-liucks-and-racing">Monster
+                                                        liucks and Racing
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-mexico">NBA Mexico
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-practice">NBA All Star
+                                                        Practice
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-celebrity-game">NBA All
+                                                        Star Celebrity Game
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-media-day">NBA All Star
+                                                        Media Day
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-all-star-weekend">NBA All Star
+                                                        Weekend
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-western-conference-first-round">NBA
+                                                        Western Conference First Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-western-conference-semifinals">NBA
+                                                        Western Conference Semifinals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nba-london">NBA London
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/jr-nba-youth-world-championship">Jr.
+                                                        NBA Youth World Championship
+                                                    </a>
+                                                </li>-->
+                                                  <li class="full-width-list"><a
+                                                        href="<%- home_url %>/events/sports/basketball/professional-nba/">All
+                                                        Details in NBA</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="<%- home_url %>/events/sports/football/nfl/">
+                                                NFL
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-pro-football-hall-of-fame-game/" class="font-weight-bold">
+                                                        Hall of Fame Game
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-pro-bowl/" class="font-weight-bold"> NFL Pro Bowl
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-experience/" class="font-weight-bold">
+                                                        Super Bowl Experience
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-party/" class="font-weight-bold">
+                                                        Super Bowl Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-steinberg-party/" class="font-weight-bold">
+                                                        Super Bowl Steinberg Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-leather-and-laces/" class="font-weight-bold">
+                                                        Super Bowl Leather & Laces
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-parking-passes/" class="font-weight-bold">
+                                                        Super Bowl Parking
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-bears/"> Chicago Bears
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/carolina-panthers/">
+                                                        Carolina Panthers
+                                                    </a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/cincinnati-bengals/">
+                                                        Cincinnati Bengals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/cleveland-browns/">
+                                                        Cleveland Browns
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/dallas-cowboys/"> Dallas
+                                                        Cowboys
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/denver-broncos/"> Denver Broncos
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/delioit-lions/"> Delioit Lions
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/green-bay-packers/"> Green Bay Packers
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/houston-texans/"> Houston Texans
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/indianapolis-colts/">
+                                                        Indianapolis Colts
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/jacksonville-jaguars/">
+                                                        Jacksonville Jaguars
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/kansas-city-chiefs/">
+                                                        Kansas City Chiefs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/las-vegas-raiders/">Las Vegas Raiders</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-chargers/">
+                                                        Los Angeles Chargers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-rams/">
+                                                        Los Angeles Rams
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/miami-dolphins/"> Miami Dolphins
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/minnesota-vikings/">
+                                                        Minnesota Vikings
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-england-paliiots/">
+                                                        New England Paliiots
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-orleans-saints/"> New Orleans Saints
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-jets/"> New York Jets
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-draft/"> NFL Draft
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/philadelphia-eagles/">
+                                                        Philadelphia Eagles
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/pittsburgh-steelers/">
+                                                        Pittsburgh Steelers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/san-francisco-49ers/"> San
+                                                        Francisco 49ers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/seattle-seahawks/">
+                                                        Seattle Seahawks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/tampa-bay-buccaneers/">
+                                                        Tampa Bay Buccaneers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/tennessee-titans/">
+                                                        Tennessee Titans
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/washington-redskins/">
+                                                        Washington Redskins
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-giants/"> New York Giants
+                                                    </a>
+                                                </li>
+
+                                               
+                                                <!-- <li>
+                                                    <a href="<%- home_url %>/tickets/oakland-raiders"> Oakland
+                                                        Raiders
+                                                    </a>
+                                                </li>
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-rams"> Los
+                                                        Angeles Rams
+                                                    </a>
+                                                </li>
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl"> Super Bowl
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/afc-playoffs"> AFC
+                                                        Playoffs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/afc-championship"> AFC
+                                                        Championship
+                                                    </a>
+                                                </li>
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-preseason"> NFL
+                                                        Preseason
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/houston-texans-draft-party">
+                                                        Houston Texans Draft Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/kansas-city-chiefs-vip-tailgate">
+                                                        Kansas City Chiefs VIP Tailgate
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-bears-family-fest">
+                                                        Chicago Bears Family Fest
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-london"> NFL London
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-mexico"> NFL Mexico
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="<%- home_url %>/tickets/40-yards-of-gold-all-star-speed-tournament">
+                                                        40 Yards of Gold All-Star Speed Tournament
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/atlanta-falcons-liaining-camp">
+                                                        Atlanta Falcons liaining Camp
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="<%- home_url %>/tickets/green-bay-packers-family-night-liaining-camp">
+                                                        Green Bay Packers Family Night - liaining Camp
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/carolina-panthers-fan-fest">
+                                                        Carolina Panthers Fan Fest
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/all-pro-tailgate-party">
+                                                        All Pro Tailgate Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/premium-tailgate-game-day-party">
+                                                        Premium Tailgate Game Day Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="<%- home_url %>/tickets/steelers-hall-of-onor-induction-ceremony">
+                                                        Steelers Hall of Honor Induction Ceremony
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/4-girls-4-the-musical"> 4
+                                                        Girls 4 - The Musical
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/2019-world-100"> 2019
+                                                        World 100
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/tailgate-guys-vip-tailgate">
+                                                        Tailgate Guys VIP Tailgate
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/ticketbash-tailgate">
+                                                        Ticketbash Tailgate
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfc-playoffs"> NFC
+                                                        Playoffs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfl-playoffs"> NFL
+                                                        Playoffs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nfc-championship"> NFC
+                                                        Championship
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-party"> Super
+                                                        Bowl Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-leigh-steinberg-party">
+                                                        Super Bowl Leigh Steinberg Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/super-bowl-leather-and-laces">
+                                                        Super Bowl Leather And Laces
+                                                    </a>
+                                                </li>
+                                               
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/gameday-tailgate-experience">
+                                                        Gameday Tailgate Experience
+                                                    </a>
+                                                </li> -->
+    
+                                                <li class="full-width-list"><a
+                                                        href="<%- home_url %>/events/sports/football/nfl/">All Details in
+                                                        NFL</a></li>
+    
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="<%- home_url %>/events/sports/hockey/professional-nhl/">NHL</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-all-star-game/" class="font-weight-bold"> NHL All Star Game
+                                                    </a>
+                                                </li>   
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-playoffs/" class="font-weight-bold"> NHL Playoffs
+                                                    </a>
+                                                </li>   
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-stanley-cup-finals/" class="font-weight-bold">
+                                                        NHL Stanley Cup Finals
+                                                    </a>
+                                                </li>                                
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/anaheim-ducks/"> Anaheim Ducks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/arizona-coyotes/"> Arizona Coyotes
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-blackhawks/">Chicago Blackhawks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/colorado-avalanche/">
+                                                        Colorado Avalanche
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/columbus-blue-jackets/">
+                                                        Columbus Blue Jackets
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/dallas-stars/"> Dallas Stars
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/delioit-red-wings/">
+                                                        Detroit Red Wings
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/edmonton-oilers/">
+                                                        Edmonton Oilers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/florida-panthers/">
+                                                        Florida Panthers
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/forliess-invitational/">
+                                                        Fortress Invitational
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/los-angeles-kings/"> Los Angeles Kings
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/minnesota-wild/">
+                                                        Minnesota Wild
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/monlieal-canadiens/">
+                                                        Montreal Canadiens
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nashville-predators/">
+                                                        Nashville Predators
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-jersey-devils/"> New Jersey Devils
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-islanders/"> New York Islanders
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-rangers/"> New York Rangers
+                                                    </a>
+                                                </li>
+                                              
+                                              <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-all-star-weekend/">
+                                                        NHL All Star Weekend
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-stadium-series/"> NHL Stadium Series
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nyi-Viewing-Party/">NYI Viewing Party</a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/ottawa-senators/"> Ottawa Senators
+                                                    </a>
+                                                </li>
+    
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/philadelphia-flyers/">
+                                                        Philadelphia Flyers
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/pittsburgh-penguins/">
+                                                        Pittsburgh Penguins
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/san-jose-sharks/"> San Jose Sharks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/st-louis-blues/"> St. Louis Blues
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/tampa-bay-lightning/">
+                                                        Tampa Bay Lightning
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/toronto-maple-leafs/">
+                                                        Toronto Maple Leafs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/vancouver-canucks/">
+                                                        Vancouver Canucks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/vegas-golden-knights/">
+                                                        Vegas Golden Knights
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/washington-capitals/">
+                                                        Washington Capitals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/winnipeg-jets/"> Winnipeg Jets
+                                                    </a>
+                                                </li>
+
+                                                <!-- 
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-skills-competition">
+                                                        NHL Skills Competition
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-conference-finals">
+                                                        NHL Conference Finals
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-playoffs"> NHL
+                                                        Playoffs
+                                                    </a>
+                                                </li>
+                                               
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-global-series"> NHL
+                                                        Global Series
+                                                    </a>
+                                                </li>
+                                              
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-winter-classic"> NHL
+                                                        Winter Classic
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-eastern-conference-first-round">
+                                                        NHL Eastern Conference First Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-eastern-conference-second-round">
+                                                        NHL Eastern Conference Second Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-western-conference-first-round">
+                                                        NHL Western Conference First Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-western-conference-second-round">
+                                                        NHL Western Conference Second Round
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/winnipeg-jets-viewing-party">
+                                                        Winnipeg Jets Viewing Party
+                                                    </a>
+                                                </li>
+                                               
+                                               
+                                               
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-preseason"> NHL
+                                                        Preseason
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/chicago-blackhawks-liaining-camp">
+                                                        Chicago Blackhawks liaining Camp
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-prospects-challenge">
+                                                        NHL Prospects Challenge
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/rookie-showcase"> Rookie
+                                                        Showcase
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/rookie-faceoff"> Rookie
+                                                        Faceoff
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/mann-cup-2019"> Mann Cup
+                                                        2019
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-rangers-2019-alumni-classic">
+                                                        New York Rangers 2019 Alumni Classic
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/nhl-fan-fair"> NHL Fan
+                                                        Fair
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/new-york-islanders-viewing-party">
+                                                        New York Islanders Viewing Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/delioit-red-wings-viewing-party">
+                                                        Delioit Red Wings Viewing Party
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<%- home_url %>/tickets/delioit-red-wings-viewing-party">Delioit
+                                                        Red Wings Viewing Party
+                                                    </a>
+                                                </li> -->
+                                                <li class="full-width-list"><a
+                                                        href="<%- home_url %>/events/sports/hockey/professional-nhl/">All
+                                                        Details in NHL</a></li> 
+    
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                                <li><a href="<%- home_url %>/events/concerts/"> Concerts </a>
+
+                                </li>
+                                <li><a href="<%- home_url %>/events/theatre/">Theatre</a>
+
+                                </li>
+                                <li><a href="<%- home_url %>/events/other/"> Other </a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="mobile-btns">
+						<!-- <div class="m-btn" id="m-search-btn">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</div> -->
+						<!-- <div class="m-btn" id="m-nav-btn">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+							<i class="fa fa-times mobile-js-hidden" aria-hidden="true"></i>
+						</div> -->
+					</div>
+				</div>
+
+				<div id="nav-search" class="search mobile-js-hidden">
+					<form onsubmit="event.preventDefault(); return handleSearchFormSubmission();">
+						<!--- cancels the default form submission behavior -->
+						<!-- action="/search" method="get" -->
+						<input type="text" name="val" autofocus="autofocus" autocomplete="off" value="" maxlength="100"
+							id="ajax-search" placeholder="Search by Performers &amp; Venues..."
+							oninput="ajaxSearch(this.value)">
+						<i class="fa fa-search"></i>
+					</form>
+
+					<div id="ajax-search-results"></div> <!-- style="display: none;" -->
+				</div>
+
+                </div>
+            </div>
+        </div>
+
+</nav>

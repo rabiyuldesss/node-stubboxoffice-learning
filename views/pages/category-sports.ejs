@@ -1,0 +1,180 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css, url });  -%>
+
+<% var default_bg_img = home_url + "/public/img/default/stub-default-bg.jpg"; %>
+
+<main>
+	<!-- <div class="header" style="background-image: url(<%= //cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>);"></div> -->
+	<div class="header">
+		<img src="<%= cat_info.singles_banner_image_url !== null ? cat_info.singles_banner_image_url : default_header_img; %>" id="page-header-img" alt="page-header sports tickets">
+	</div>
+
+	<div id="featured" class="section">
+		<div class="inner">
+
+				<a class="f-performer" href="<%= home_url %>/events/sports/baseball/professional-mlb" style="background-image: url(<%= main_cats['mlb'].banner_image_url !== null ? main_cats['mlb'].banner_image_url : default_bg_img; %>);">
+					<p class="performer-name"> MLB </p>
+					<p class="btn"> See Teams </p>
+				</a>
+
+				<a class="f-performer" href="<%= home_url %>/events/sports/basketball/professional-nba" style="background-image: url(<%= main_cats['nba'].banner_image_url !== null ? main_cats['nba'].banner_image_url : default_bg_img; %>);">
+					<p class="performer-name"> NBA </p>
+					<p class="btn"> See Teams </p>
+				</a>
+
+				<a class="f-performer" href="<%= home_url %>/events/sports/football/nfl" style="background-image: url(<%= main_cats['nfl'].banner_image_url !== null ? main_cats['nfl'].banner_image_url : default_bg_img; %>);">
+					<p class="performer-name"> NFL </p>
+					<p class="btn"> See Teams </p>
+				</a>
+
+				<a class="f-performer" href="<%= home_url %>/events/sports/hockey/professional-nhl" style="background-image: url(<%= main_cats['nhl'].banner_image_url !== null ? main_cats['nhl'].banner_image_url : default_bg_img; %>);">
+					<p class="performer-name"> NHL </p>
+					<p class="btn"> See Teams </p>
+				</a>
+		</div>
+	</div>
+
+
+	<% if (performers.length > 0) { %>
+	<div id="perform" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading sports tickets"> Now Trending in <%= category_page_title %> </h3>
+			<div id="p-links">
+				<% for(let x = 0; x < performers.length; x++) { %>
+					<a class="p-link" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+						<p class="performer-link"> <%= performers[x].name %> </p>
+						<div class="event-arrow" href="<%= home_url %>/tickets/<%= performers[x].performer_slug %>">
+							<img src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow sports tickets">
+						</div>
+					</a>
+				<% } %>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+	<div id="top-lists" class="section">
+		<div class="inner">
+			<% if (top_sellers.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top Selling <%= category_page_title %> </h4>
+				<ul class="list">
+					<% for (let ts = 0; ts < top_sellers.length; ts++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_sellers[ts].performer_slug %>"> <%= top_sellers[ts].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_cats.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top <%= category_page_title %> Categories </h4>
+				<ul class="list">
+					<% for (let tc = 0; tc < (top_cats.length > 6 ? 6 : top_cats.length); tc++) { %>
+						<li><a href="<%= home_url %>/events/<%= top_cats[tc].parent_cat_slug %>/<%= top_cats[tc].child_cat_slug %>"> <%= top_cats[tc].child_cat_name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_events.length !== 0) { %>
+			<div class="compo">
+				<h4 class="title"> Top Events </h4>
+				<ul class="list">
+					<% for (let te = 0; te < (top_events.length > 6 ? 6 : top_events.length); te++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_events[te].performer_slug %>"> <%= top_events[te].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+
+			<% if (top_events.length !== 0 && top_events.length > 6) { %>
+			<div class="compo">
+				<h4 class="title"> More <%= category_page_title %> Events </h4>
+				<ul class="list">
+					<% for (let te = 6; te < top_events.length; te++) { %>
+						<li><a href="<%= home_url %>/tickets/<%= top_events[te].performer_slug %>"> <%= top_events[te].name %> </a> </li>
+					<% } %>
+				</ul>
+			</div>
+			<% } %>
+		</div>
+	</div>
+
+	<style>
+	    ul {
+	        margin: 10px 0px;
+	    }
+	</style>
+
+    <div style="padding: 20px; max-width: 90%; margin: 0px auto; font-size: 24px;">
+        <h2 style="font-weight: bold;color: #000; margin-bottom: 20px;">Sports Tickets</h2>
+        <p style="margin-bottom: 20px;">We are a sports nation! Everywhere you go in the US, you will find a variety of sports being played under the watchful eyes of loyal fans. Even though there are several sports to choose from, there are recognizably four major sports in the US: Football, Baseball, Basketball and Hockey. And with variety in sports comes diversity and international participation in the playing field. Sports is not just an American phenomenon, it is one we share on a global level. A common, compelling expression within our sports psyche that brands our team and creates an expected desire to see them compete. Grander audiences translate into greater demand for tickets. And Stub Boxoffice has the tickets to get you there to be part of it. Stub Boxoffice just doesn’t focus on the major sports, they reach out to almost every venue, arena or stadium, large and small, to get the tickets you need to see your favorite team play. Be there when they compete, stay there when they win and promise yourself that you’ll be there when they go to the championship, all with the confidence that Stub Boxoffice will have the tickets when you need them.</p>
+        <p style="margin-bottom: 20px; margin-left: 20px;">
+            <strong>MLB -</strong>
+            Baseball has been around as long as Americans can remember. It’s American, just like apple pie and it’s no surprise that it’s known as America’s favorite pastime. Baseball is entrenched in history and tradition made so by memorable plays by remarkable players in some of those most unique playing fields seen anywhere else. There is no other field like a baseball field! Two of the more popular and “historical” baseball fields are Yankee Stadium and Fenway Park but some of the newer stadiums like Camden Yards and Pacbell Park derived their look and enjoyment from the old-days of classic baseball style. So whether you’re new to the sport or a huge fan of baseball, the tickets you want will be ready for you. Stub Boxoffice has tickets for every game, from Spring Training to Opening Day, through the dog days to the mid-summer classic All-Star Game all the way to the World Series. No matter where you are, you will find the tickets you’re looking for at Stub Boxoffice - the right date, the right seats both at the right price. Never miss a chance to see your favorite baseball team play - get whatever you need at Stub Boxoffice.
+        </p>
+        <div style="margin-bottom: 20px; margin-left: 40px;">
+            <p><strong>Baseball stats</strong></p>
+            <ul>
+                <li style="font-size: 13px;">The average attendance for a Major League game (2019) - 28,317</li>
+                <li style="font-size: 13px;">Average cost for a ticket (2019) - $32.99</li>
+                <li style="font-size: 13px;">A total of 251 players represented 20 different countries and territories outside of the 50 United States on 2019 Opening Day 25-man rosters and inactive lists, Major League Baseball announced today.</li>
+            </ul>
+        </div>
+        <p style="margin-bottom: 20px; margin-left: 20px;"><strong>NBA -</strong>
+            The game of basketball has steadily increased in popularity in the last 20 years and has become an international sport that draws players and fans from all over the world. In the 70’s, the game became revolutionized with the merger of the young and exciting American Basketball Association (ABA) and the stalmart National Basketball Association (NBA) which would become the base of the new league. As the court developed as a platform for expression, personalities and heroes emerged. Basketball has always been defined by the styles of players that make it exciting and memorable to watch. Teams are stacked with talent across the league and features thrilling plays throughout the course of the game. Basketballs ever-growing phenomenon is captured across many platforms in our digital era from tv to streaming feeds but nothing captures the ultimate essence of the game better than seeing it for yourself. Even though venues are smaller than most other major sports, basketball arenas give the fan an almost in-game experience by being close to the courts and the players. That’s why it’s important to get the tickets you want before it's sold out. Let Stub Boxoffice be your intermediary for NBA tickets, ready on the fly or somewhere down the long season. And if your team makes it the playoffs and maybe even the finals, Stub Boxoffice has got you covered there too! We even have tickets for college games, including the seats for March Madness and the Final Four!
+        </p>
+        <div style="margin-bottom: 20px; margin-left: 40px;">
+            <p><strong>Basketball Facts</strong></p>
+            <ul>
+                <li style="font-size: 13px;">Average attendance in 2019 for an NBA game - 17,857.</li>
+                <li style="font-size: 13px;">The United Center where the Chicago Bulls play, has the highest seating capacity in the league with 20, 917 seats while the Smoothie King Arena - home of the New Orlean Pelicans has the smallest seating capacity at 16,867</li>
+                <li style="font-size: 13px;">There are 30 NBA teams - 29 in the US and 1 in Canada (Toronto). The WNBA, the premier women’s basketball league owned by the NBA has 12 teams.</li>
+            </ul>
+        </div>
+        <p style="margin-bottom: 20px; margin-left: 20px;"><strong>NFL</strong>
+        In our land of sports and competition, NFL football reigns king for fanbase and viewership. Almost everyone in America either loves football or knows someone that does. Football, also known as Gridiron, has one of the largest sustainable fan bases of any sport and certainly one of the most colorful. Being the most popular sport in the US, NFL games rank the highest in average attendance of any professional sports league in the world with the Superbowl being ranked among the most-watched club sporting events in the world.1 Rituals are practiced routinely during football season, notably through tailgate parties and other parking lot exhibitions that have become part of the pre-game celebration. It’s a Sunday tradition that’s part of a larger football culture to completely dedicate a whole day of preparing for the game, watching the game and celebrating team wins. Football is engrained in the native sports psyche throughout the US and has gained a significant fanbase in other parts of the world.
+
+        </p>
+         <p style="margin-bottom: 20px; margin-left: 40px;">
+             What originally evolved from the crossing of soccer and rugby from the fields of Rutgers and Princeton in the late 1800’s, “Gridiron” has firmly established itself as modern-day gladiatorial event worth the price of admission. Thus the high demand with such few options. That’s why you can turn to Stub Boxoffice to get you those “priceless” tickets that so many want for themselves and their family and friends. Simply, find the game you’re looking for, pick your seats and get ready for the game! So don’t miss out and get caught trying to find your favorite team on tv, with Stub Boxoffice you’re already there.
+
+         </p>
+         <div style="margin-bottom: 20px; margin-left: 40px;">
+            <p><strong>Football Facts</strong></p>
+            <ul>
+                <li style="font-size: 13px;">The NFL has an estimated earnings of close to $15B in 2018.</li>
+                <li style="font-size: 13px;">As of 2018, the NFL averaged 67,100 live spectators per game, and 17,177,581 total for the season.</li>
+                <li style="font-size: 13px;">The NFL, first known as the American Professional Football Association, was formed in Canton on Sept. 17, 1920.</li>
+            </ul>
+        </div>
+        <p style="margin-bottom: 20px; margin-left: 20px;"><strong>NHL -</strong>
+            The National Hockey League is a professional ice hockey league in North America born from the defuncted National Hockey Association back in 1917. The NHL consists of 31 teams altogether with 24 teams being situated in North America and 7 teams being from Canada. Despite hockey being one of the true international sporting competitions in the world, the NHL is the premier professional ice hockey league with global player participation from almost every nation and country where the game is played. Canadians have historically constituted the majority of the players in the league, with an increasing percentage of American and European players in recent seasons.1Each team plays a total of 82 season games, of which 16 teams with the highest point total at the end of the season move on to the playoffs. The two teams, one from each division, that are left standing move on to the championship known as the Stanley Cup, the oldest professional sports trophy in North America.
+        </p>
+        <p style="margin-bottom: 20px; margin-left: 20px;">Now that you know a little more about hockey, think about what it must be like to be at one of these games. Hockey is extremely fast-paced and physical by itself but once you add the personalities to the mix, hockey becomes brutally entertaining. And hockey fans feed on it exclusively. Like when a player gets checked on the boards, it’s expected to see several attendees banging on the plexiglass trying to get a rise out of the players. And when a player scores 3-goals (known as a “hat trick”), it is customary for the home team fans to throw a hat on the ice to celebrate this feat. Between periods, a large ice surface-smoothing machine called a zamboni comes out - always a fan-favorite to one of these machines at work. </p>
+        <p style="margin-bottom: 20px; margin-left: 20px;">But much like a professional NBA game, NHL games have a limited number of seats with many of the seats being bought up by dedicated fans. With Stub Boxoffice, you can count yourself in to join in the festivities with the other fans knowing that they have the tickets you’re looking for. It’s simple - go to Stub Boxoffice, look up your team in the NHL menu and buy your tickets! Learning to skate may be tricky but finding your seats with Stub Boxoffice is easier than driving a zamboni.</p>
+        <p style="margin-bottom: 20px; margin-left: 20px;"><strong>MLS -</strong>
+            Major League Soccer is one of the youngest leagues in America even though soccer, commonly known as “football” everywhere else besides the United States, has been played professionally all over the world for over 100 years. MLS consists of 26 teams, of which 23 teams are in the US and 3 teams are from Canada. Regular season runs from March to October with 34 games being played over the course of the season. However, despite how young the league is and for all of the other sports America is focused on presently, MLS has the third highest attendance average of any sports league in the US after NFL and MLB.
+        </p>
+        <p style="margin-bottom: 20px; margin-left: 20px;">
+            American soccer took some time to gain a foothold for the attention and financial contributions necessary to stay afloat. And even after the league had reaped popularity, it lacked commonality among staunch soccer fans that wanted to see the game played traditionally rather than the Americanized version that the MLS was trying to display. Soon after 2002, the MLS had seen a major increase in attendance when the US men’s soccer team made it into the quarterfinals of the World Cup. In 2005, several new teams entered into the league with larger venues to capture the ever-growing attendance brought on by an influx of loyal soccer fans living in the US as well as Americans turning their attention towards the international game.
+        </p>
+        <p style="margin-bottom: 20px; margin-left: 20px;">Today, American soccer has remained strong and continues to fill the seats with avid fans. Television contracts have been signed, thereby creating more exposure to an interested audience that wanted to see more of the game. But just like any other sport, the only way to truly be a fan of the sport, is to see it yourself in person. There are few breaks in soccer with the action being constant and engaging. Fans are always on their heels, sharing a mesmerizing chant to associated with their team and waving flags and blowing horns during game play. Stub Boxofffice is no stranger to the game of soccer and they have the tickets to prove it. No matter what game you prefer, Stub Boxoffice has just what you’re looking. Check out our list of games for MLS, find the seat and make your way to the game. And with Stub Boxoffice’s ticket guarantee, you won’t have to worry about sitting in the penalty box away from all the action.</p>
+
+    </div>
+
+	<% if (cat_info.description != null) { %>
+	<div id="description" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> About <%= cat_info.parent_cat_name %> </h3>
+			<%- cat_info.description %>
+		</div>
+	</div>
+	<% } %>
+
+</main>
+
+
+<%- include('../partials/footer', { home_url, js });  -%>

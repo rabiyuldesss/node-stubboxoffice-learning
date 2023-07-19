@@ -1,0 +1,27 @@
+
+
+<%- include('../../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<div class="header">
+		<img src="<%= header_img %>" id="page-header-img" alt="page-header">
+	</div>
+
+	
+	<div id="legal" class="section">
+		<div class="inner">
+			<h1 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> Terms & Contitions </h1>
+
+			<div class="content">
+				<script type="text/javascript"> document.write('<script language="javascript" src="https://tickettransaction.com/?bid=' + <%= bid %> + '&sitenumber=1&tid=600" ></' + 'script>'); </script>
+				<script language="javascript" src="https://tickettransaction.com/?bid=<%= bid %>&sitenumber=1&tid=600"></script>
+			</div>
+		</div>
+	</div>
+
+</main>
+
+
+
+<%- include('../../partials/footer', { home_url, js });  -%>

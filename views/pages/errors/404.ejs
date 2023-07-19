@@ -1,0 +1,30 @@
+
+
+<%- include('../../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<div class="header">
+		<img src="<%= header_img %>" id="page-header-img" alt="page-header">
+	</div>
+
+	<div id="404-content" class="section error-page">
+		<div class="inner">
+
+			<div id="server-message">
+				<img src="<%= home_url %>/public/img/error/404.svg">
+				
+				<p> Sorry, I don't know where that is. </p>
+				
+				<div class="btn-group">
+					<a class="btn" href="<%= home_url %>"> Go Home </a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</main>
+
+
+<%- include('../../partials/footer', { home_url, js });  -%>

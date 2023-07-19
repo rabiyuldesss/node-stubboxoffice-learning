@@ -1,0 +1,399 @@
+
+<%- include('../partials/header/mega-menu-main', { home_url, meta, css });  -%>
+
+<%
+	var default_bg_img = home_url + "/public/img/default/stub-default-bg.jpg";
+	var next_icon = '<i class="fa fa-angle-double-right" aria-hidden="true"></i>';
+%>
+
+<!--Added By Monik-->
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Stub Box Office",
+  "image": "https://stubboxoffice.com/public/img/stubbox-logo.png",
+  "@id": "",
+  "url": "https://stubboxoffice.com/",
+  "telephone": "",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "",
+    "addressLocality": "",
+    "addressRegion": "TX",
+    "postalCode": "",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  }
+}
+</script>
+<!--Added By Monik-->
+
+
+
+<main>
+	<div id="main-slider">
+		<!-- style="height: auto; width: 102%; min-width: 100%; min-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-51%, -51%);" -->
+		<div class="video-wrapper">
+			<video autoplay muted loop poster="<%= home_url %>/public/img/video/stubvid-alt-screen.png">
+				<!-- <source src="<%= home_url %>/public/video/stubvid-alt.webm"
+						type="video/webm"> -->
+				<source src="<%= home_url %>/public/video/stubvid-alt.mp4"
+						type="video/mp4">
+			</video>
+		</div>
+
+		<div class="content-wrapper">
+			<div id="change-location" style="display: none !important;">
+				<div class="header">
+					<h3 class="title"> Change Location </h3>
+					<i class="fa fa-times" id="close-location" aria-hidden="true" style="color: #fff; font-size: 18px;"></i>
+				</div>
+				<form onsubmit="event.preventDefault(); return handleSearchLocationSubmission();"> <!--- cancels the default form submission behavior -->
+					<input type="text" name="locval" autocomplete="off" value="" maxlength="100" id="ajax-location-search" placeholder="Search by city..." oninput="ajaxLocationSearch(this.value)">
+					<i class="fa fa-search"></i>
+				</form>
+
+				<div id="ajax-location-results"></div> <!-- style="display: none;" -->
+			</div>
+
+
+			<div id="home-search" class="search mobile-js-hidden">
+				<div class="location">
+					<img src="<%= home_url %>/public/img/home/places.png" id="location-img" alt="Places ticket resell">
+					<h3> Searching near <a id="switch-location"> <% if (location) { %> <%= location.city %>, <%= location.state %> <% } else { %> (city selection) <% } %> </a> </h3>
+				</div>
+
+				<form onsubmit="event.preventDefault(); return handleHomeSearchFormSubmission();"> <!--- cancels the default form submission behavior --> <!-- action="/search" method="get" -->
+					<input type="text" name="homval" autofocus="autofocus" autocomplete="off" value="" maxlength="100" id="ajax-home-search" placeholder="Search by Performers, &amp; Venues..." oninput="ajaxHomeSearch(this.value)">
+					<i class="fa fa-search"></i>
+				</form>
+
+				<p id="site-hero-disclaimer"> Stub Boxoffice is a resale marketplace, not a venue. Ticket prices may be above face value. </p>
+
+				<div id="ajax-home-search-results"></div> <!-- style="display: none;" -->
+			</div>
+		</div>
+
+		<% if (top_performers !== null && top_performers.length != 0) { %>
+		<div id="top-performers">
+			<% for (var topPos = 0; topPos < top_performers.length; topPos++) { %>
+				<a class="top-performer" href="<%= home_url %>/tickets/<%= top_performers[topPos].slug %>">
+					<% if (top_performers[topPos].image !== null) { %>
+						<img src="<%= top_performers[topPos].image %>">
+					<% } else { %>
+						<img src="<%= home_url %>/public/img/default/stub-default-bg.jpg" alt="Default Background ticket resell">
+					<% } %>
+
+					<span class="name">
+					<% if (top_performers[topPos].name.length >= 25) { %>
+					<%= top_performers[topPos].name.substring(0, 22) + "..." %>
+					<% } else { %>
+					<%= top_performers[topPos].name %>
+					<% } %>
+					</span>
+				</a>
+
+			<% } %>
+		</div>
+		<% } %>
+
+		<div id="transition"></div>
+	</div>
+
+
+	<div id="events-abs-wrapper">
+		<div id="events" class="section">
+			<div class="inner">
+
+				<% if (are_results_localized) { %>
+
+					<div class="event-cat-containers">
+						<div class="event-cat">
+							<h4 class="head"> Top Sports </h4>
+
+							<% if (sub_top_performers['1'] !== null && sub_top_performers['1'].length != 0) { %>
+							<div class="list">
+								<% for (var i = 0; i < 4; i++) { if(sub_top_performers['1'][i]){ %>
+								<a class="event" href="<%= home_url %>/tickets/<%= sub_top_performers['1'][i].slug %>">
+									<p>
+										<% if (sub_top_performers['1'][i].name.length >= 25) { %>
+										<%= sub_top_performers['1'][i].name.substring(0, 25) + "..." %>
+										<% } else { %>
+										<%= sub_top_performers['1'][i].name %>
+										<% } %>
+									</p>
+									<div class="event-arrow">
+										<img src="<%= home_url %>/public/img/slider/right-arrow-white.png" alt="Right arrow ticket resell">
+									</div>
+								</a>
+								<% }} %>
+							</div>
+							<% } else { %>
+							<div class="no-local-results">
+								<p>No Upcoming Events Found.</p>
+							</div>
+							<% } %>
+
+							<a class="more-btn btn" href="<%= home_url %>/events/sports"> More Sports Tickets + </a>
+						</div>
+
+						<div class="event-cat">
+							<h4 class="head"> Top Concerts </h4>
+
+							<% if (sub_top_performers['2'] !== null && sub_top_performers['2'].length != 0) { %>
+							<div class="list">
+								<% for (var i = 0; i < 4; i++) { if(sub_top_performers['2'][i]){ %>
+								<a class="event" href="<%= home_url %>/tickets/<%= sub_top_performers['2'][i].slug %>">
+									<p>
+										<% if (sub_top_performers['2'][i].name.length >= 27) { %>
+										<%= sub_top_performers['2'][i].name.substring(0, 27) + "..." %>
+										<% } else { %>
+										<%= sub_top_performers['2'][i].name %>
+										<% } %>
+									</p>
+									<div class="event-arrow">
+										<img src="<%= home_url %>/public/img/slider/right-arrow-white.png" alt="Right arrow ticket resell">
+									</div>
+								</a>
+								<% } }%>
+							</div>
+							<% } else { %>
+							<div class="no-local-results">
+								<p>No Upcoming Events Found.</p>
+							</div>
+							<% } %>
+
+							<a class="more-btn btn" href="<%= home_url %>/events/concerts"> More Concert Tickets + </a>
+						</div>
+
+						<div class="event-cat">
+							<h4 class="head"> Top Theatre </h4>
+
+							<% if (sub_top_performers['3'] !== null && sub_top_performers['3'].length != 0) { %>
+							<div class="list">
+								<% for (var i = 0; i < 4; i++) { if(sub_top_performers['3'][i]){%>
+								<a class="event" href="<%= home_url %>/tickets/<%= sub_top_performers['3'][i].slug %>">
+									<p>
+										<% if (sub_top_performers['3'][i].name.length >= 27) { %>
+										<%= sub_top_performers['3'][i].name.substring(0, 27) + "..." %>
+										<% } else { %>
+										<%= sub_top_performers['3'][i].name %>
+										<% } %>
+									</p>
+									<div class="event-arrow">
+										<img src="<%= home_url %>/public/img/slider/right-arrow-white.png" alt="Right arrow ticket resell">
+									</div>
+								</a>
+								<% } }%>
+							</div>
+							<% } else { %>
+							<div class="no-local-results">
+								<p>No Upcoming Events Found.</p>
+							</div>
+							<% } %>
+
+							<a class="more-btn btn" href="<%= home_url %>/events/theatre"> More Theatre Tickets + </a>
+						</div>
+
+						<div class="event-cat">
+							<h4 class="head"> Other Top Events </h4>
+
+							<% if (sub_top_performers['4'] !== null && sub_top_performers['4'].length != 0) { %>
+							<div class="list">
+								<% for (var i = 0; i < 4; i++) {if(sub_top_performers['4'][i]){ %>
+								<a class="event" href="<%= home_url %>/tickets/<%= sub_top_performers['4'][i].slug %>">
+									<p>
+										<% if (sub_top_performers['4'][i].name.length >= 27) { %>
+										<%= sub_top_performers['4'][i].name.substring(0, 27) + "..." %>
+										<% } else { %>
+										<%= sub_top_performers['4'][i].name %>
+										<% } %>
+									</p>
+									<div class="event-arrow">
+										<img src="<%= home_url %>/public/img/slider/right-arrow-white.png" alt="Right arrow ticket resell">
+									</div>
+								</a>
+								<% }} %>
+							</div>
+							<% } else { %>
+							<div class="no-local-results">
+								<p>No Upcoming Events Found.</p>
+							</div>
+							<% } %>
+
+							<a class="more-btn btn" href="<%= home_url %>/events/other"> More Tickets + </a>
+						</div>
+
+					</div>
+				<% } %>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<!-- BEGIN STATIC HTML -->
+	<div id="slider-group" class="section">
+		<div class="inner">
+
+			<div class="slider-container">
+				<div class="slider-header">
+					<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading ticket resell"> Sports </h3>
+					<a href="<%= home_url %>/events/sports/"> View All </a>
+				</div>
+				<div id="sport-slider" class="home-body-slider">
+					<img id="left-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/left-arrow.png" alt="Left arrow ticket resell">
+					<div class="inner">
+						<% cat_slider['sports'].forEach(function(cat){ %>
+							<div class="performer-card">
+								<div class="img-container" style="background: url('<% if (cat.banner_image_url != null) { %> <%= cat.banner_image_url %> <% } else { %> <%= default_bg_img %> <% } %>')">
+									<a class="overlay" href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+										<p>
+											<% if (cat.grandchild_cat_slug) { %>
+												<%= cat.grandchild_cat_name %>
+											<% } else { %>
+												<%= cat.child_cat_name %>
+											<% } %> Tickets
+										</p>
+									</a>
+								</div>
+								<a href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+									<% if (cat.grandchild_cat_slug) { %>
+										<%= cat.grandchild_cat_name %>
+									<% } else { %>
+										<%= cat.child_cat_name %>
+									<% } %>
+								</a>
+								<!-- <a href="<%= // home_url %>/tickets/<%= // performer.performer_slug %>"> <%= // performer.name %> Tickets </a> -->
+							</div>
+						<% }); %>
+					</div>
+					<img id="right-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow ticket resell">
+				</div>
+			</div>
+
+
+			<div class="slider-container">
+				<div class="slider-header">
+					<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading ticket resell"> Concerts </h3>
+					<a href="<%= home_url %>/events/concerts/"> View All </a>
+				</div>
+				<div id="concert-slider" class="home-body-slider">
+					<img id="left-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/left-arrow.png" alt="Left arrow ticket resell">
+					<div class="inner">
+						<% cat_slider['concert'].forEach(function(cat){ %>
+							<div class="performer-card">
+								<div class="img-container" style="background: url('<% if (cat.banner_image_url != null) { %> <%= cat.banner_image_url %> <% } else { %> <%= default_bg_img %> <% } %>')">
+									<a class="overlay" href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+										<p>
+											<% if (cat.grandchild_cat_slug) { %>
+												<%= cat.grandchild_cat_name %>
+											<% } else { %>
+												<%= cat.child_cat_name %>
+											<% } %> Tickets
+										</p>
+									</a>
+								</div>
+								<a href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+									<% if (cat.grandchild_cat_slug) { %>
+										<%= cat.grandchild_cat_name %>
+									<% } else { %>
+										<%= cat.child_cat_name %>
+									<% } %>
+								</a>
+								<!-- <a href="<%= // home_url %>/tickets/<%= // performer.performer_slug %>"> <%= // performer.name %> Tickets </a> -->
+							</div>
+						<% }); %>
+					</div>
+					<img id="right-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow ticket resell">
+				</div>
+			</div>
+
+
+			<div class="slider-container">
+				<div class="slider-header">
+					<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading ticket resell"> Theatre </h3>
+					<a href="<%= home_url %>/events/theatre/"> View All </a>
+				</div>
+				<div id="theatre-slider" class="home-body-slider">
+					<img id="left-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/left-arrow.png" alt="Left arrow ticket resell">
+					<div class="inner">
+						<% cat_slider['theatre'].forEach(function(cat){ %>
+							<div class="performer-card">
+								<div class="img-container" style="background: url('<% if (cat.banner_image_url != null) { %> <%= cat.banner_image_url %> <% } else { %> <%= default_bg_img %> <% } %>')">
+									<a class="overlay" href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+										<p>
+											<% if (cat.grandchild_cat_slug) { %>
+												<%= cat.grandchild_cat_name %>
+											<% } else { %>
+												<%= cat.child_cat_name %>
+											<% } %> Tickets
+										</p>
+									</a>
+								</div>
+								<a href="<%= home_url %>/events/<%= cat.parent_cat_slug %>/<%= cat.child_cat_slug %>/<%= cat.grandchild_cat_slug %>">
+									<% if (cat.grandchild_cat_slug) { %>
+										<%= cat.grandchild_cat_name %>
+									<% } else { %>
+										<%= cat.child_cat_name %>
+									<% } %>
+								</a>
+								<!-- <a href="<%= // home_url %>/tickets/<%= // performer.performer_slug %>"> <%= // performer.name %> Tickets </a> -->
+							</div>
+						<% }); %>
+					</div>
+					<img id="right-arrow-btn" class="slider-arrow add-box-shadow" src="<%= home_url %>/public/img/slider/right-arrow.png" alt="Right arrow ticket resell">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- END STATIC HTML -->
+
+	<% if (page_desc != null) { %>
+	<div id="bottom-description" class="section">
+		<div class="inner">
+			<h3 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading ticket resell"> <%= page_desc.title %> </h3>
+			<div class="body">
+
+				A resale marketplace, not a venue. Ticket prices may be above face value. We're your connection to live entertainment. Stubboxoffice.com connects you to more than 100,000 concerts, sports & theater events worldwide! All tickets are listed by professional ticket-selling companies & trusted ticket sellers, all backed by our 100% Money-Back Guarantee.
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+
+	<div id="bottom-description" class="section">
+		<div class="inner">
+			<h1 class="title"> Ticket resell </h1>
+			<h2 class="title"> Ticket resell </h2>
+			<h2 class="title"> Ticket resell </h2>
+		</div>
+	</div>
+
+</main>
+
+
+<%- include('../partials/footer-home', { home_url, js });  -%>
+

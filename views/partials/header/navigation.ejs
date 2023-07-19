@@ -1,0 +1,41 @@
+<nav role="navigation" id="navigation" class="nav-initial-pos">
+
+	<div id="main-nav" class="section">
+		<div class="inner">
+			<div class="content">
+				<div class="left">
+					<a href="<%- home_url %>/" class="logo-container">
+						<img src="<%- home_url %>/public/img/stubbox-logo.png" alt="Stubbox">
+					</a>
+
+					<div id="nav-links" class="mobile-js-hidden">
+						<a href="<%- home_url %>/events/sports/"> Sports </a>
+						<a href="<%- home_url %>/events/concerts/"> Concerts </a>
+						<a href="<%- home_url %>/events/theatre/"> Theatre </a>
+						<a href="<%- home_url %>/events/other/"> Other </a>
+					</div>
+
+					<div class="mobile-btns">
+						<div class="m-btn" id="m-search-btn">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</div>
+						<div class="m-btn" id="m-nav-btn">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+							<i class="fa fa-times mobile-js-hidden" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+
+				<div id="nav-search" class="search mobile-js-hidden">
+					<form onsubmit="event.preventDefault(); return handleSearchFormSubmission();"> <!--- cancels the default form submission behavior --> <!-- action="/search" method="get" -->
+						<input type="text" name="val" autofocus="autofocus" autocomplete="off" value="" maxlength="100" id="ajax-search" placeholder="Search by Performers &amp; Venues..." oninput="ajaxSearch(this.value)">
+						<i class="fa fa-search"></i>
+					</form>
+
+					<div id="ajax-search-results"></div> <!-- style="display: none;" -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</nav>

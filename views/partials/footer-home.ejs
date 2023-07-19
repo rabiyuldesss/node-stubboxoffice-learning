@@ -1,0 +1,526 @@
+
+		<footer>
+			<div id="top-foot" class="section">
+				<div class="inner">
+					<div id="link-line">
+						<a href="/legal/privacy"> Privacy Policy </a>
+						<span>|</span>
+						<a href="/contact"> Contact Us </a>
+					</div>
+
+					<p class="disclaimer"> Stub Boxoffice is a resale marketplace, not a venue. Ticket prices may be above face value. </p>
+
+					<div id="payment-logos">
+						<a target="blank"> <img src="/public/img/footer/payments/paypal.png" alt="Stubbox Office - Paypal - Available Payment Methods"> </a>
+						<a target="blank"> <img src="/public/img/footer/payments/mastercard.png" alt="Stubbox Office - Mastercard - Available Payment Methods"> </a>
+						<a target="blank"> <img src="/public/img/footer/payments/visa.png" alt="Stubbox Office - Visa - Available Payment Methods"> </a>
+						<a target="blank"> <img src="/public/img/footer/payments/amex.png" alt="Stubbox Office - American Express - Available Payment Methods"> </a>
+						<a target="blank"> <img src="/public/img/footer/payments/discover.png" alt="Stubbox Office - Discover - Available Payment Methods"> </a>
+						<a target="blank" href="https://secure.trust-provider.com/ttb_searcher/trustlogo?v_querytype=C&v_shortname=CL1&v_search=https://stubboxoffice.com/&x=6&y=5"
+						   target="popup"
+						   onclick="window.open('https://secure.trust-provider.com/ttb_searcher/trustlogo?v_querytype=W&v_shortname=CL1&v_search=https://stubboxoffice.com/&x=6&y=5','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"> <img class="sectigo-seal-logo" src="/public/img/footer/payments/sectigo_trust_seal_md_106x42.png" alt="stubboxoffice.com"> </a>
+						<!--<a target="blank" class="sectigo-seal">-->
+							<!--<script type="text/javascript" alt="TrustLogo"> //<![CDATA[-->
+								<!--var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");-->
+								<!--document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));-->
+								<!--//]]>-->
+                                <!--document.addEventListener('DOMContentLoaded', function(){-->
+                                    <!--document.getElementById('payment-logos').childNodes[12].childNodes[0].setAttribute('alt', 'stubboxoffice.com');-->
+                                    <!--// document.getElementById('payment-logos').childNodes[6].setAttribute('alt', 'stubboxoffice.com');-->
+                                <!--}, false);-->
+							<!--</script>-->
+							<!--<script language="JavaScript" type="text/javascript"> TrustLogo("https://stubboxoffice.com/public/img/footer/payments/sectigo_trust_seal_md_106x42.png", "CL1", "none", "test"); </script>-->
+						<!--</a>-->
+					</div>
+				</div>
+			</div>
+
+			<div id="bot-foot" class="section">
+				<div class="inner">
+					<p class="copyright"> © Copyright 2020 Stub Boxoffice. All Rights Reserved. </p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- mandatory js scripts -->
+		<script type="text/javascript" src="<%= home_url %>/public/js/main.js"></script>
+
+		<!-- debounce function && debounced menu scroll -->
+		<script type="text/javascript">
+			function debounce(func, wait, immediate) {
+			  var timeout;
+			  return function executedFunction() {
+			    var context = this;
+			    var args = arguments;
+
+			    var later = function() {
+			      timeout = null;
+			      if (!immediate) func.apply(context, args);
+			    };
+
+			    var callNow = immediate && !timeout;
+			    clearTimeout(timeout);
+			    timeout = setTimeout(later, wait);
+			    if (callNow) func.apply(context, args);
+			  };
+			};
+
+			// checks if the #ajax-home-search is at least 75px under the viewport (seeable window)
+			window.onscroll = debounce(function(){ document.getElementById("navigation").classList = document.getElementById("ajax-home-search").getBoundingClientRect().top - 75 < 0 ? "nav-bg-enabled" : ""; }, 50);
+
+			// set the navbar on page load just incase its reloaded below the fold and didnt update
+			document.getElementById("navigation").classList = document.getElementById("ajax-home-search").getBoundingClientRect().top - 75 < 0 ? "nav-bg-enabled" : "";
+		</script>
+
+
+		<script type="text/javascript">
+			document.querySelector("#switch-location").addEventListener('click', switchToLocationSearch);
+			document.querySelector("#close-location").addEventListener('click', switchToBaseSearch);
+
+			function switchToLocationSearch() {
+				document.getElementById("change-location").style.display = "";
+				document.getElementById("home-search").style.display = "none";
+			}
+
+			function switchToBaseSearch() {
+				document.getElementById("change-location").style.display = "none";
+				document.getElementById("home-search").style.display = "";
+			}
+		</script>
+
+
+		<!-- for HOME HEADER ajax search -->
+		<script type="text/javascript">
+			function ajaxHomeSearch(str) {
+				// hide results from navigation searchbar
+				document.querySelector("#ajax-search-results").style = "display: none !important;";
+
+				// sync this searchbar with the navigation searchbar
+				document.querySelector("input#ajax-search").value = str;
+
+				if (str.length < 3) {
+					document.querySelector("#ajax-home-search-results").style = "display: none !important;";
+					return;
+				}
+
+				// IE7+, Firefox, Chrome, Opera, Safari
+				var ajax = new XMLHttpRequest();
+
+				ajax.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var res = JSON.parse(this.responseText);
+						var search_results_container = document.querySelector("#ajax-home-search-results");
+
+						search_results_container.innerHTML = " ";
+
+						if (res['performers'].length == 0 && res['venues'].length == 0) {
+							search_results_container.style = "display: none !important;";
+						}
+
+						if (res['performers'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Performers</p>";
+
+							res['performers'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						if (res['venues'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Venues</p>";
+
+							res['venues'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						if (document.querySelector("#ajax-home-search-results a.search-item") != null) {
+							// results navigation functions
+							document.querySelector('#ajax-home-search-results a.search-item:first-of-type').className += " active";
+						}
+					}
+				}
+
+				ajax.open("POST", "/ajax-home-search", true);
+				ajax.setRequestHeader('Content-Type', 'application/json');
+				ajax.send(JSON.stringify({ searchVal: str }));
+			}
+
+
+
+
+			// stop form in navigation from submitting and resetting the page
+			// send user to active 'search-item' link when enter was pressed
+			function handleHomeSearchFormSubmission() {
+				var curr = document.querySelector("#ajax-home-search-results a.search-item.active");
+
+				// send user to the selected url/performer/venue
+				if (curr !== null && curr !== undefined) window.location.href = document.querySelector("#ajax-home-search-results a.search-item.active").href;
+
+				return false;
+			}
+
+			// add event listener to each 'search-item' to add .active if the element is hovered over
+			function makeHomeSearchItemActive(e) {
+				var prevActive = document.querySelector('#ajax-home-search-results a.search-item.active');
+
+				// if there is a previous 'search-item' w/ the class 'active', remove the class active
+				if (prevActive !== null && prevActive !== undefined) prevActive.classList.remove('active');
+
+				// add the class
+				e.classList.add('active');
+			}
+
+
+			// on button press, to handle use the handleSearchKeyPress function // e is a keydown event
+			document.getElementById("ajax-home-search").onkeydown = function(e) {
+				switch (e.keyCode) {
+					// Up key
+					case 38:
+						return handleHomeUpAction();
+						break;
+					// Down key
+					case 40:
+						return handleHomeDownAction();
+						break;
+				}
+			}
+
+			function handleHomeUpAction() {
+				var curr = document.querySelector('#ajax-home-search-results a.search-item.active');
+				var next = getHomePreviousSearchItem(curr);
+
+				curr.classList.remove("active");
+				next.classList.add("active");
+
+				return;
+			}
+
+			function handleHomeDownAction() {
+				var curr = document.querySelector('#ajax-home-search-results a.search-item.active');
+				var next = getHomeNextSearchItem(curr);
+
+				curr.classList.remove("active");
+				next.classList.add("active");
+
+				return;
+			}
+
+			function getHomeNextSearchItem(elem) {
+				// if there is no next sibling, then return the first child in the list
+				if (elem.nextElementSibling === undefined || elem.nextElementSibling === null) return document.querySelector('#ajax-home-search-results a.search-item');
+
+				// Get the next sibling element from the given element
+				var sibling = elem.nextElementSibling;
+
+				// match if '.search-item' else continue the search
+				while (sibling) {
+					// if there is no next sibling, then return the first child in the list
+					if (elem.nextElementSibling === undefined || elem.nextElementSibling === null) return document.querySelector('#ajax-home-search-results a.search-item');
+
+					// if match, return match
+					if (sibling.matches('.search-item')) return sibling;
+
+					// increment '#ajax-home-search-results' to next element
+					sibling = sibling.nextElementSibling;
+				}
+			}
+
+			function getHomePreviousSearchItem(elem) {
+				// if there is no next sibling, then return the first child in the list
+				if (elem.previousElementSibling === undefined || elem.previousElementSibling === null) return document.querySelector('#ajax-home-search-results a.search-item:last-child');
+
+				// Get the next sibling element from the given element
+				var sibling = elem.previousElementSibling;
+
+				// match if '.search-item' else continue the search
+				while (sibling) {
+					// if there is no next sibling, then return the first child in the list
+					if (sibling.previousElementSibling === undefined || sibling.previousElementSibling === null) return document.querySelector('#ajax-home-search-results a.search-item:last-child');
+
+					// if match, return match
+					if (sibling.matches('.search-item')) return sibling;
+
+					// increment '#ajax-home-search-results' to next element
+					sibling = sibling.previousElementSibling;
+				}
+			}
+		</script>
+
+
+
+		<!-- for live ajax search -->
+		<script type="text/javascript">
+			function ajaxSearch(str) {
+				// hide results from the homepage main searchbar
+				document.querySelector("#ajax-home-search-results").style = "display: none !important;";
+
+				// sync this searchbar with the homepage main searchbar
+				document.querySelector("input#ajax-home-search").value = str;
+
+				if (str.length < 3) {
+					document.querySelector("#ajax-search-results").style = "display: none !important;";
+					return;
+				}
+
+				// IE7+, Firefox, Chrome, Opera, Safari
+				var ajax = new XMLHttpRequest();
+
+				ajax.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var res = JSON.parse(this.responseText);
+						var search_results_container = document.querySelector("#ajax-search-results");
+
+						search_results_container.innerHTML = " ";
+
+						if (res['performers'].length == 0 && res['venues'].length == 0) {
+							search_results_container.style = "display: none !important;";
+						}
+
+						if (res['performers'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Performers</p>";
+
+							res['performers'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						if (res['venues'].length != 0) {
+							search_results_container.style = "display: block;";
+							search_results_container.innerHTML += "<p class='sect-header'>Venues</p>";
+
+							res['venues'].forEach(function(link){
+								search_results_container.innerHTML += link;
+							});
+						}
+
+						if (document.querySelector("#ajax-search-results a.search-item") != null) {
+							// results navigation functions
+							document.querySelector('#ajax-search-results a.search-item').className += " active";
+						}
+					}
+				}
+
+				ajax.open("POST", "/ajax-search", true);
+				ajax.setRequestHeader('Content-Type', 'application/json');
+				ajax.send(JSON.stringify({ searchVal: str }));
+			}
+
+
+			// stop form in navigation from submitting and resetting the page
+			// send user to active 'search-item' link when enter was pressed
+			function handleSearchFormSubmission() {
+				var curr = document.querySelector("#ajax-search-results a.search-item.active");
+
+				// send user to the selected url/performer/venue
+				if (curr !== null && curr !== undefined) window.location.href = document.querySelector("#ajax-search-results a.search-item.active").href;
+
+				return false;
+			}
+
+			// add event listener to each 'search-item' to add .active if the element is hovered over
+			function makeSearchItemActive(e) {
+				var prevActive = document.querySelector('#ajax-search-results a.search-item.active');
+
+				// if there is a previous 'search-item' w/ the class 'active', remove the class active
+				if (prevActive !== null && prevActive !== undefined) prevActive.classList.remove('active');
+
+				// add the class
+				e.classList.add('active');
+			}
+
+
+			// on button press, to handle use the handleSearchKeyPress function // e is a keydown event
+			document.getElementById("ajax-search").onkeydown = function(e) {
+				switch (e.keyCode) {
+					// Up key
+					case 38:
+						return handleUpAction();
+						break;
+					// Down key
+					case 40:
+						return handleDownAction();
+						break;
+				}
+			}
+
+			function handleUpAction() {
+				var curr = document.querySelector('#ajax-search-results a.search-item.active');
+				var next = getPreviousSearchItem(curr);
+
+				curr.classList.remove("active");
+				next.classList.add("active");
+
+				return;
+			}
+
+			function handleDownAction() {
+				var curr = document.querySelector('#ajax-search-results a.search-item.active');
+				var next = getNextSearchItem(curr);
+
+				curr.classList.remove("active");
+				next.classList.add("active");
+
+				return;
+			}
+
+			function getNextSearchItem(elem) {
+				// if there is no next sibling, then return the first child in the list
+				if (elem.nextElementSibling === undefined || elem.nextElementSibling === null) return document.querySelector('#ajax-search-results a.search-item');
+
+				// Get the next sibling element from the given element
+				var sibling = elem.nextElementSibling;
+
+				// match if '.search-item' else continue the search
+				while (sibling) {
+					// if there is no next sibling, then return the first child in the list
+					if (elem.nextElementSibling === undefined || elem.nextElementSibling === null) return document.querySelector('#ajax-search-results a.search-item');
+
+					// if match, return match
+					if (sibling.matches('.search-item')) return sibling;
+
+					// increment '#ajax-search-results' to next element
+					sibling = sibling.nextElementSibling;
+				}
+			}
+
+			function getPreviousSearchItem(elem) {
+				// if there is no next sibling, then return the first child in the list
+				if (elem.previousElementSibling === undefined || elem.previousElementSibling === null) return document.querySelector('#ajax-search-results a.search-item:last-child');
+
+				// Get the next sibling element from the given element
+				var sibling = elem.previousElementSibling;
+
+				// match if '.search-item' else continue the search
+				while (sibling) {
+					// if there is no next sibling, then return the first child in the list
+					if (sibling.previousElementSibling === undefined || sibling.previousElementSibling === null) return document.querySelector('#ajax-search-results a.search-item:last-child');
+
+					// if match, return match
+					if (sibling.matches('.search-item')) return sibling;
+
+					// increment '#ajax-search-results' to next element
+					sibling = sibling.previousElementSibling;
+				}
+			}
+		</script>
+
+
+
+
+
+
+		<!-- script for controlling search input && navigation w/ associated icons -->
+		<script type="text/javascript">
+			document.getElementById("m-search-btn").addEventListener('click', mobileSearchBtnClick);
+			document.getElementById("m-nav-btn").addEventListener('click', mobileNavBtnClick);
+
+			function mobileSearchBtnClick(e) {
+				var search = document.getElementById("nav-search");
+				var nav = document.getElementById("nav-links");
+				var navIconOpen = document.querySelector("#m-nav-btn i.fa-bars");
+				var navIconClose = document.querySelector("#m-nav-btn i.fa-times");
+
+				if (search.classList.contains('mobile-js-hidden')) {
+					search.classList.remove("mobile-js-hidden");
+
+					if (!nav.classList.contains('mobile-js-hidden')) {
+						nav.classList.add("mobile-js-hidden");
+
+						navIconOpen.classList.remove("mobile-js-hidden");
+						navIconClose.classList.add("mobile-js-hidden");
+					}
+				} else {
+					search.classList.add("mobile-js-hidden");
+				}
+			}
+
+			function mobileNavBtnClick(e) {
+				var search = document.getElementById("nav-search");
+				var nav = document.getElementById("nav-links");
+				var navIconOpen = document.querySelector("#m-nav-btn i.fa-bars");
+				var navIconClose = document.querySelector("#m-nav-btn i.fa-times");
+
+				if (nav.classList.contains('mobile-js-hidden')) {
+					nav.classList.remove("mobile-js-hidden");
+
+					navIconOpen.classList.add("mobile-js-hidden");
+					navIconClose.classList.remove("mobile-js-hidden");
+
+					if (!search.classList.contains('mobile-js-hidden')) {
+						search.classList.add("mobile-js-hidden");
+					}
+				} else {
+					nav.classList.add("mobile-js-hidden");
+
+					navIconOpen.classList.remove("mobile-js-hidden");
+					navIconClose.classList.add("mobile-js-hidden");
+				}
+			}
+		</script>
+
+
+
+		<script type="text/javascript">
+			function ajaxLocationSearch(str) {
+				if (str.length == 0) {
+					document.querySelector("#ajax-location-results").style = "display: none !important;";
+					return;
+				} else if (str.length > 3) {
+					// IE7+, Firefox, Chrome, Opera, Safari
+					var ajax = new XMLHttpRequest();
+
+					ajax.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							var locations = JSON.parse(this.responseText);
+
+							var search_results_container = document.querySelector("#ajax-location-results");
+
+							search_results_container.innerHTML = " ";
+
+							if (locations && locations.length === 0) {
+								search_results_container.style = "display: none !important;";
+
+							} else {
+								search_results_container.style = "display: block;";
+
+								locations.forEach(function(link) {
+									search_results_container.innerHTML += link;
+								});
+							}
+
+							if (document.querySelector("#ajax-location-results") != null) {
+								// results navigation functions
+								document.querySelector('#ajax-location-results a.search-item').className += " active";
+							}
+						}
+					}
+
+					ajax.open("POST", "/ajax-search-location", true);
+					ajax.setRequestHeader('Content-Type', 'application/json');
+					ajax.send(JSON.stringify({ searchVal: str }));
+				}
+			}
+		</script>
+
+
+
+		<!-- Begin loop through all the js files -->
+		<%
+			if (js != undefined && js.length != 0) {
+				js.forEach(function(js_url) {
+		%>
+		<script type="text/javascript" src="<%= js_url %>"></script>
+		<%
+				});
+			}
+		%>
+
+		<script type="text/javascript" src="https://stubboxoffice.com/public/js/mega-menu.js"></script>
+		<!-- End loop through all the js files -->
+
+
+	</body>
+</html>

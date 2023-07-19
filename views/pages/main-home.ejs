@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en-US" class="no-js">
+	<head>
+		<title> <%- meta != undefined && meta['page_title'] != undefined && meta['page_title'] != '' ? meta['page_title'] : "Stub Boxoffice" -%> </title>
+		<meta charset="UTF-8">
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="shortcut icon" type="/images/favicon.ico" />
+        <link href="<%= home_url %>/public/img/favicon.ico" rel="apple-touch-icon-precomposed" type="/images/favicon.ico" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Stub Boxoffice" />
+		<meta property="og:url" content="" />
+		<meta property="og:site_name" content="Stub Boxoffice" />
+        <meta property="og:url" content="https://stubboxoffice.com/" />
+		<meta property="og:image" content="<%= home_url %>/public/img/favicon.ico" />
+		<meta property="og:description" content="Stub Box Office is your ticket resell headquarters for concerts, sports, theatre, and more." />
+
+		<!--<h1>ticket resell</h1>-->
+		<!--<h2>ticket resell</h2>-->
+		<!--<h3>ticket resell</h3>-->
+
+        <!-- google-site-verification-tag  -->
+        <meta name="google-site-verification" content="ZcvDZRuI9MGiovlO5oKV5rmrtkXIVlCRu5AHx410o5I" />
+         <!--- end of google-site-varification-tag-->
+
+         <!--Added REL Tag-->
+            <link rel="canonical" href="https://stubboxoffice.com/">
+         <!--END REL-->
+
+		<!-- base css files -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- <link rel="stylesheet" type="text/css" href="<%- home_url %>/public/css/main.css"> -->
+
+		<link rel=”canonical” href=”https://stubboxoffice.com>
+
+		<!-- Begin loop through all the css files -->
+		<%
+			if (css != undefined && css.length != 0) {
+				css.forEach(function(css_url) {
+		%>
+		<link rel="stylesheet" type="text/css" href="<%- css_url %>">
+		<%
+				});
+			}
+		%>
+		<!-- End loop through all the css files -->
+
+
+
+	</head>
+
+
+	<body>
+		<nav role="navigation" id="navigation">
+
+			<div id="main-nav" class="section">
+				<div class="inner">
+					<div class="content">
+						<div class="left">
+							<a href="<%- home_url %>/" class="logo-container">
+								<img src="<%- home_url %>/public/img/stubbox-logo.png" alt="Stubbox">
+							</a>
+
+							<div id="nav-links" class="mobile-js-hidden">
+								<a href="<%- home_url %>/events/sports/"> Sports </a>
+								<a href="<%- home_url %>/events/concerts/"> Concerts </a>
+								<a href="<%- home_url %>/events/theatre/"> Theatre </a>
+								<a href="<%- home_url %>/events/other/"> Other </a>
+							</div>
+
+							<div class="mobile-btns">
+								<div class="m-btn" id="m-search-btn" style="display: none !important;">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</div>
+
+								<div class="m-btn" id="m-nav-btn">
+									<i class="fa fa-bars" aria-hidden="true"></i>
+									<i class="fa fa-times mobile-js-hidden" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+
+						<!-- <div id="nav-search" class="search mobile-js-hidden"> -->
+							<!--- cancels the default form submission behavior --> <!-- action="/search" method="get" -->
+							<!-- <form onsubmit="event.preventDefault(); return handleSearchFormSubmission();">
+								<input type="text" name="val" autofocus="autofocus" autocomplete="off" value="" maxlength="100" id="ajax-search" placeholder="Search Performers, Events, &amp; Venues..." oninput="ajaxSearch(this.value)">
+								<i class="fa fa-search"></i>
+							</form> -->
+
+							<!-- <div id="ajax-search-results"></div> --> <!-- style="display: none;" -->
+						<!-- </div> -->
+					</div>
+				</div>
+			</div>
+
+		</nav>
+

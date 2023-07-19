@@ -1,0 +1,152 @@
+
+
+<%- include('../partials/header/main', { home_url, meta, css });  -%>
+
+
+<main>
+	<!-- <div class="header" style="background-image: url(<%= header_img %>); width: 100%; height: 250px; background-size: cover;"></div> -->
+	<div class="header">
+		<img src="<%= header_img %>" id="page-header-img" alt="page-header">
+	</div>
+	
+	
+	<div id="title" class="section">
+		<div class="inner">
+			<h1 class="title"> <img src="<%= home_url %>/public/img/header/heading.png" alt="heading"> Contact Us </h1>
+		</div>
+	</div>
+
+	<div id="contact" class="section">
+		<div class="inner">
+
+			<div id="form">
+				<form id="contactForm">
+					<div class="input-wrapper">
+						<label for="name">Name *</label>
+						<input type="text" id="name" name="name">	
+					</div>
+
+					<div class="input-wrapper">
+						<label for="email">Email *</label>
+						<input type="text" id="email" name="email">	
+					</div>
+
+					<div class="input-wrapper">
+						<label for="email"> Subject * </label>
+						<select name="emailtype" form="emailtype" id="emailtype">
+							<option value="admin" selected> General Inquiry </option>
+							<option value="webmaster"> Web Issues </option>
+						</select>	
+					</div>
+
+					<div class="input-wrapper">
+						<label for="message">Message *</label>
+						<textarea id="message" name="message" style="min-height: 150px;"></textarea>	
+					</div>
+
+					<!-- <div class="g-recaptcha" data-sitekey="<%= //reCAPTCHA_site_key %>"></div> -->
+
+					<input type="submit" value="Submit" id="contactSubmission">
+				</form>
+
+				<div id="formResponse">
+					<p class=""> <span id="responseText"></span> <i class="fa fa-times" aria-hidden="true" id="closeResponseText"></i></p>
+				</div>
+			</div>
+
+			<div id="mailto">
+				<ul class="add-box-shadow">
+					<li>
+						<h3> Contact Us </h3>
+						<p> To contact us with a general inquiry email us at: </p>
+						<a class="email" href="mailto:admin@stubboxoffice.com"> admin@stubboxoffice.com </a>
+					</li>
+
+					<hr>
+
+					<li>
+						<h3> Website Issues </h3>
+						<p> For reporting website issues please email the webmaster at: </p>
+						<a class="email" href="mailto:webmaster@stubboxoffice.com"> webmaster@stubboxoffice.com </a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+</main>
+
+<script>
+	// prevent the form from submitting
+	document.getElementById("contactForm").addEventListener("click", function(e){ event.preventDefault(); });
+
+	// close the response if the x is clicked
+	document.getElementById("closeResponseText").addEventListener("click", function(e){
+		document.querySelector("#formResponse").classList.remove("show");
+		document.querySelector("#formResponse").classList.remove("failure");
+		document.querySelector("#formResponse").classList.remove("success");
+	});
+
+	(function() {
+		var reqSendgrid;
+
+		document.getElementById("contactSubmission").addEventListener('click', sendSendgridMailRequest);
+
+		function sendSendgridMailRequest() {
+			reqSendgrid = new XMLHttpRequest();
+			document.querySelector("#formResponse").className="";
+
+			document.getElementById("contactSubmission").disabled = true;
+
+			if (!reqSendgrid) {
+				document.getElementById("responseText").innerHTML = JSON.parse(reqSendgrid.response).message;
+				document.querySelector("#formResponse").classList.add("show");
+				document.querySelector("#formResponse").classList.add("failure");
+			}
+
+			reqSendgrid.onreadystatechange = function() {
+				if (reqSendgrid.readyState === 4) {
+					var res = JSON.parse(reqSendgrid.response);
+					document.getElementById("responseText").innerHTML = res.message;
+					document.querySelector("#formResponse").classList.add("show");
+
+					!res.error ? document.querySelector("#formResponse").classList.add("success") : document.querySelector("#formResponse").classList.add("failure");
+				}
+
+				document.getElementById("contactSubmission").disabled = false;
+			};
+
+			reqSendgrid.open('POST', '<% home_url %>/ajax/submit-contact-form', true);
+			reqSendgrid.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+			reqSendgrid.send(JSON.stringify(getFormValues()));
+		}
+
+		function getFormValues() {
+			var json = {};
+			var emailtype = document.getElementById("emailtype");
+
+			if (document.getElementById("name").value !== "") {
+				json["name"] = document.getElementById("name").value
+			}
+
+			if (document.getElementById("email").value !== "") {
+				json["email"] = document.getElementById("email").value
+			}
+
+			if (emailtype.options[emailtype.selectedIndex].value !== "") {
+				json["to"] = emailtype.options[emailtype.selectedIndex].value
+			}
+
+			if (document.getElementById("message").value !== "") {
+				json["message"] = document.getElementById("message").value
+			}
+
+			return json;
+		}
+	})();
+</script>
+
+
+
+<%- include('../partials/footer', { home_url, js });  -%>
