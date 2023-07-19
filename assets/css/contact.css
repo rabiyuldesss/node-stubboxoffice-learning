@@ -1,0 +1,92 @@
+main #title {
+  margin: 35px 0 25px 0; }
+  main #title .inner h1.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 10px 0 5px; }
+
+main #contact {
+  padding: 0 0 50px 0; }
+  main #contact .inner {
+    display: flex;
+    flex-flow: row nowrap; }
+    main #contact .inner #form {
+      width: 50%;
+      max-width: 500px; }
+      main #contact .inner #form form .input-wrapper {
+        margin: 0 0 15px 0; }
+        main #contact .inner #form form .input-wrapper label {
+          margin: 0 0 5px 0;
+          line-height: 12px; }
+      main #contact .inner #form form input[type='submit']:hover {
+        background-color: #dc4041 !important; }
+      main #contact .inner #form form input[type='submit']:disabled {
+        color: #333;
+        background-color: #c0c0c0; }
+      main #contact .inner #form #formResponse {
+        margin: 5px 0 0 0;
+        padding: 10px 20px;
+        height: 0;
+        display: none;
+        overflow: hidden; }
+        main #contact .inner #form #formResponse * {
+          color: #fff; }
+        main #contact .inner #form #formResponse.show {
+          display: inherit;
+          height: auto; }
+        main #contact .inner #form #formResponse.success {
+          background-color: #36dc00; }
+        main #contact .inner #form #formResponse.failure {
+          background-color: #d82323; }
+        main #contact .inner #form #formResponse p {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0;
+          padding: 0; }
+          main #contact .inner #form #formResponse p span {
+            font-weight: 600; }
+          main #contact .inner #form #formResponse p i {
+            font-size: 12px; }
+    main #contact .inner #mailto {
+      width: calc(100% - 475px);
+      min-width: 50%;
+      margin: 0 0 0 25px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: flex-start; }
+      main #contact .inner #mailto ul {
+        margin: 0;
+        padding: 25px 30px;
+        list-style: none;
+        background-color: #dc4041; }
+        main #contact .inner #mailto ul li {
+          display: flex;
+          flex-flow: column;
+          align-items: center; }
+          main #contact .inner #mailto ul li * {
+            color: #fff;
+            text-align: center; }
+          main #contact .inner #mailto ul li:first-of-type {
+            margin: 0 0 25px 0; }
+          main #contact .inner #mailto ul li:last-of-type {
+            margin: 25px 0 0 0; }
+          main #contact .inner #mailto ul li h3 {
+            margin: 0 0 5px 0;
+            font-weight: 500; }
+          main #contact .inner #mailto ul li a {
+            display: inline-block;
+            margin: 0 auto;
+            border-bottom: 1px dashed #fff; }
+    @media (max-width: 600px) {
+      main #contact .inner {
+        flex-flow: column; }
+        main #contact .inner #form, main #contact .inner #mailto {
+          width: 100%; }
+        main #contact .inner #form {
+          max-width: none; }
+        main #contact .inner #mailto {
+          margin: 35px 0 0 0; } }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3MvY29udGFjdC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQU1BO0VBRUUscUJBQXFCLEVBQUE7RUFGdkI7SUFNSSxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLG9CQUFvQixFQUFBOztBQVJ4QjtFQWNFLG1CQUFtQixFQUFBO0VBZHJCO0lBaUJHLGFBQWE7SUFDYixxQkFBcUIsRUFBQTtJQWxCeEI7TUFxQkksVUFBVTtNQUNWLGdCQUFnQixFQUFBO01BdEJwQjtRQTBCTSxrQkFBa0IsRUFBQTtRQTFCeEI7VUE2Qk8saUJBQWlCO1VBQ2pCLGlCQUFpQixFQUFBO01BOUJ4QjtRQW9DTyxvQ0FBeUMsRUFBQTtNQXBDaEQ7UUF3Q08sV0FBVztRQUNYLHlCQUF5QixFQUFBO01BekNoQztRQStDSyxpQkFBaUI7UUFDakIsa0JBQWtCO1FBRWxCLFNBQVM7UUFDVCxhQUFhO1FBQ2IsZ0JBQWdCLEVBQUE7UUFwRHJCO1VBdURNLFdBQVcsRUFBQTtRQXZEakI7VUEyRE0sZ0JBQWdCO1VBQ2hCLFlBQVksRUFBQTtRQTVEbEI7VUFnRU0seUJBbEVXLEVBQUE7UUFFakI7VUFvRU0seUJBdkVtQixFQUFBO1FBR3pCO1VBd0VNLGFBQWE7VUFDYixxQkFBcUI7VUFDckIsOEJBQThCO1VBQzlCLG1CQUFtQjtVQUVuQixTQUFTO1VBQ1QsVUFBVSxFQUFBO1VBOUVoQjtZQWlGTyxnQkFBZ0IsRUFBQTtVQWpGdkI7WUFxRk8sZUFBZSxFQUFBO0lBckZ0QjtNQTZGSSx5QkFBeUI7TUFDekIsY0FBYztNQUNkLGtCQUFrQjtNQUVsQixhQUFhO01BQ2IscUJBQXFCO01BQ3JCLHVCQUF1QjtNQUN2Qix1QkFBdUIsRUFBQTtNQXBHM0I7UUF1R0ssU0FBUztRQUNULGtCQUFrQjtRQUNsQixnQkFBZ0I7UUFFaEIseUJBaEhnQixFQUFBO1FBS3JCO1VBK0dNLGFBQWE7VUFDYixpQkFBaUI7VUFDakIsbUJBQW1CLEVBQUE7VUFqSHpCO1lBb0hPLFdBQVc7WUFDWCxrQkFBa0IsRUFBQTtVQXJIekI7WUF5SE8sa0JBQWtCLEVBQUE7VUF6SHpCO1lBNkhPLGtCQUFrQixFQUFBO1VBN0h6QjtZQWlJTyxpQkFBaUI7WUFDakIsZ0JBQWdCLEVBQUE7VUFsSXZCO1lBd0lPLHFCQUFxQjtZQUNyQixjQUFjO1lBQ2QsOEJBQThCLEVBQUE7SUFNbEM7TUFoSkg7UUFpSkksaUJBQWlCLEVBQUE7UUFqSnJCO1VBb0pLLFdBQVcsRUFBQTtRQXBKaEI7VUF3SkssZUFBZSxFQUFBO1FBeEpwQjtVQTRKSyxrQkFBa0IsRUFBQSxFQUNsQiIsImZpbGUiOiJjb250YWN0LmNzcyJ9 */

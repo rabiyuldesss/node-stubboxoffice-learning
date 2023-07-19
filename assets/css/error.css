@@ -1,0 +1,19 @@
+#server-message {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 100px 0; }
+  #server-message > img {
+    max-width: 400px;
+    width: 95%;
+    margin: 0 auto 75px; }
+  #server-message > p {
+    font-size: 700;
+    font-size: 16px;
+    margin: 0 0 25px 0; }
+  #server-message .btn-group {
+    display: flex;
+    flex-flow: row wrap; }
+    #server-message .btn-group .btn {
+      margin: 0 5px; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3MvZXJyb3Iuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNDLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLGdCQUFnQixFQUFBO0VBSmpCO0lBT0UsZ0JBQWdCO0lBQ2hCLFVBQVU7SUFDVixtQkFBbUIsRUFBQTtFQVRyQjtJQWFFLGNBQWM7SUFDZCxlQUFlO0lBQ2Ysa0JBQWtCLEVBQUE7RUFmcEI7SUFtQkUsYUFBYTtJQUNiLG1CQUFtQixFQUFBO0lBcEJyQjtNQXVCRyxhQUFhLEVBQUEiLCJmaWxlIjoiZXJyb3IuY3NzIn0= */
